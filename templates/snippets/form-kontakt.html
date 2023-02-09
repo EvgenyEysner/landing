@@ -1,0 +1,23 @@
+<form id="form_1" class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact"
+  method="post" action="">
+  <input type="hidden" name="form_type" value="form_1" />
+  {% csrf_token %}
+  <div class="form-wrap" id="contact">
+    <label class="form-label" for="contact-name-2">Name</label>
+    <input class="form-input" id="contact-name-2" type="text" name="name" data-constraints="@Required" />
+  </div>
+  <div class="form-wrap">
+    <label class="form-label" for="contact-email-2">Email</label>
+    <input class="form-input" id="contact-email-2" type="email" name="email" data-constraints="@Required @Email" />
+  </div>
+  <div class="form-wrap">
+    <label class="form-label" for="contact-phone-2">Telefon</label>
+    <input class="form-input" id="contact-phone-2" type="text" name="phone" data-constraints="@Required @PhoneNumber" />
+  </div>
+  <div class="form-button">
+    <button class="button button-jerry button-primary" type="submit">
+      Senden<span class="button-jerry-line"></span><span class="button-jerry-line"></span><span
+        class="button-jerry-line"></span><span class="button-jerry-line"></span>
+    </button>
+  </div>
+</form>

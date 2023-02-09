@@ -1,0 +1,25 @@
+    {% load static custom_tags %}
+    <footer class="section novi-background bg-cover section-sm footer-classic context-dark" id="contacts">
+      <div class="container"><a class="brand wow blurIn" href="{% url 'home' %}"><img
+            src="{% static 'images/logo-inverse-2-108x124.svg' %}" alt="" width="124" height="132" /></a>
+        <ul class="contacts-modern footer-classic-list">
+          <li class="wow fadeInLeft"><a class="heading-3" href="tel:#">1-800-901-234</a></li>
+          <li class="wow fadeInRight"><a class="heading-3" href="mailto:#">info@mundm-bau.de</a></li>
+        </ul>
+        <ul class="list-inline list-inline-xxl list-social footer-classic-list">
+            {% get_social_links as social_links %}
+            {% for account in social_links %}
+          <li>
+              <a class="icon" href="{{account.link}}">
+                  <img src="{{account.icon.url}}" alt="" width="27" height="27" />
+              </a>
+          </li>
+            {% endfor %}
+        </ul>
+        <p class="rights"><span>&copy;&nbsp; </span>
+          <span class="copyright-year"></span>
+          <span>&nbsp;</span>
+          <span>M&M Bau GmbH</span><span>Alle Rechte vorbehalten</span>
+        </p>
+      </div>
+    </footer>

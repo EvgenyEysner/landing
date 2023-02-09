@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+# django
+django = "==4.1.6"                          # django!
+# Security
+django-axes = "==5.36.0"                     # Bruteforce security
+django-referrer-policy = "==1.0"             # Security middleware to avoid leaking Referer information to linked websites
+django-csp = "==3.7"                         # Security middleware for telling the browser not to load stuff from other websites
+# Logging
+sentry-sdk = "==1.7.2"                       # Logging to Sentry
+django-db-logger = "==0.1.12"                # Database logging
+# Deploy
+django-environ = "==0.9.0"                   # Enables environment variables in django settings # Required for django-storages with S3
+gunicorn = "==20.0.4"                        # WSGI HTTP Server for UNIX
+whitenoise = "==5.2.0"                       # Serving static files
+django-ses = "==3.1.2"                       # AWS Email Backend
+# Utility
+python-dateutil = "==2.8.1"                  # Extensions for working with datetime.date
+Pillow = "==9.0.1"                           # Imaging Library
+django-extensions = "==3.1.3"                # Useful extensions (i .e. management commands)
+django-querycount = "==0.7.0"                # Simple performance monitoring middleware
+django-mysql = "==4.7.1"                    # Django-MySQL extends Django’s built-in MySQL and MariaDB support
+
+setuptools = "*"
+
+[requires]
+python_version = "3.8"
