@@ -8,7 +8,6 @@ name = "pypi"
 django = "==4.1.6"                          # django!
 # Security
 django-axes = "==5.36.0"                     # Bruteforce security
-django-referrer-policy = "==1.0"             # Security middleware to avoid leaking Referer information to linked websites
 django-csp = "==3.7"                         # Security middleware for telling the browser not to load stuff from other websites
 # Logging
 sentry-sdk = "==1.7.2"                       # Logging to Sentry

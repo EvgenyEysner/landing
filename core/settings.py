@@ -1,31 +1,50 @@
-# https://django-environ.readthedocs.io/en/latest/getting-started.html#installation
-import environ
+import datetime
 import os
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+# https://django-environ.readthedocs.io/en/latest/getting-started.html#installation
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+env = environ.Env(
+    # django
+    DJANGO_ADMINS=(list, []),
+    DJANGO_ALLOWED_HOSTS=(list, ["127.0.0.1", "localhost", "0.0.0.0"]),
+    DJANGO_SECURE_HSTS_SECONDS=(int, 0),
+    DJANGO_SESSION_COOKIE_SECURE=(bool, True),
+    # Emailing
+    DJANGO_DEFAULT_FROM_EMAIL=(
+        str,
+        "",
+    ),
+    DJANGO_HELLO_EMAIL=(str, ""),
+    DJANGO_BACKOFFICE_EMAIL=(str, ""),
+    # Sentry
+    DJANGO_SENTRY_DSN=(str, ""),
+    DJANGO_SENTRY_ENVIRONMENTS=(str, "local"),
+    DEBUG=(bool, False),
+)
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
-
+environ.Env.read_env()
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
+DEBUG = env.bool("DEBUG")
+ADMINS = tuple([tuple(admins.split(":")) for admins in env.list("DJANGO_ADMINS")])
+MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "0.0.0.0"]
-
-
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
+AUTHENTICATION_BACKENDS = [
+    # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
+    "axes.backends.AxesBackend",
+    # Django ModelBackend is the default authentication backend.
+    "django.contrib.auth.backends.ModelBackend",
+]
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -38,7 +57,6 @@ INSTALLED_APPS = [
     "axes",
     "django_db_logger",
     "django_mysql",  # docs https://django-mysql.readthedocs.io/en/latest/index.html
-    "health_check",
 ]
 
 MIDDLEWARE = [
@@ -49,11 +67,79 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "querycount.middleware.QueryCountMiddleware"
+    "csp.middleware.CSPMiddleware",
+    "querycount.middleware.QueryCountMiddleware",  # query count
+    # AxesMiddleware should be the last middleware in the MIDDLEWARE list.
+    # It only formats user lockout messages and renders Axes lockout responses
+    # on failed user authentication attempts from login views.
+    # If you do not want Axes to override the authentication response
+    # you can skip installing the middleware and use your own views.
+    "axes.middleware.AxesMiddleware",
 ]
 
 CSRF_COOKIE_SECURE = True
 ROOT_URLCONF = "core.urls"
+
+# Security envs
+SESSION_COOKIE_SECURE = env.bool("DJANGO_SESSION_COOKIE_SECURE")
+SECURE_HSTS_SECONDS = env.bool("DJANGO_SECURE_HSTS_SECONDS")
+if SECURE_HSTS_SECONDS > 0:
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+# Security middleware settings
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_SSL_REDIRECT = SESSION_COOKIE_SECURE
+# Use X-Forwarded-Proto Header to determine SSL status (useful for API docs)
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# Csrf middleware settings
+CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
+
+# Referrer-Policy middleware
+REFERRER_POLICY = "same-origin"
+URL_PROTOCOL = "https://" if SESSION_COOKIE_SECURE else "http://"
+
+# CSP config
+CSP_DEFAULT_SRC = (
+    "'self'",
+    "'unsafe-inline'",
+    "localhost:8000",
+    "unpkg.com",
+    "https://maps.googleapis.com",
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com",
+    "https://maps.gstatic.com",
+    "https://cdn.jsdelivr.net",
+)
+
+# Cross-site request forgery
+CSRF_USE_SESSIONS = True
+# CSRF_TRUSTED_ORIGINS = [
+#     "localhost:3000",
+#     "localhost:8000",
+#     "127.0.0.1:3000",
+#     "127.0.0.1:8000",
+# ]
+
+# Axes config
+LOGIN_TIMEDELTA = 15 * 60
+AXES_FAILURE_LIMIT = 25
+AXES_COOLOFF_TIME = datetime.timedelta(0, LOGIN_TIMEDELTA)
+AXES_DISABLE_ACCESS_LOG = True
+AXES_META_PRECEDENCE_ORDER = (  # Copied from django-ipware as that is apparently not set by default
+    "HTTP_X_FORWARDED_FOR",
+    "X_FORWARDED_FOR",  # <client>, <proxy1>, <proxy2>
+    "HTTP_CLIENT_IP",
+    "HTTP_X_REAL_IP",
+    "HTTP_X_FORWARDED",
+    "HTTP_X_CLUSTER_CLIENT_IP",
+    "HTTP_FORWARDED_FOR",
+    "HTTP_FORWARDED",
+    "HTTP_VIA",
+)
+# Block by Username only (i.e.: Same user different IP is still blocked, but different user same IP is not)
+AXES_ONLY_USER_FAILURES = True
 
 TEMPLATES = [
     {
@@ -142,10 +228,91 @@ ADMINS = [
     ("Admin", "garmonia.eisner@gmail.com"),
 ]
 SERVER_EMAIL = env("SERVER_EMAIL")
+# Logging
+DB_LOGGER_ENTRY_LIFETIME = 30
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+        "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"},
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+    },
+    "formatters": {
+        "verbose": {
+            "format": "%(levelname)s %(asctime)s %(module)s "
+            "%(process)d %(thread)d %(message)s"
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "db_handler": {
+            "level": "DEBUG",
+            "class": "django_db_logger.db_log_handler.DatabaseLogHandler",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "system": {
+            "level": "INFO",
+            "handlers": ["console", "db_handler"],
+            "propagate": True,
+        },
+        "async": {
+            "level": "INFO",
+            "handlers": ["console", "db_handler"],
+            "propagate": True,
+        },
+        "django_scrubber": {
+            "level": "DEBUG",
+            "handlers": ["console"],
+            "propagate": True,
+        },
+    },
+}
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-#         'LOCATION': os.path.join(BASE_DIR, 'cache_files'),  # Указываем, куда будем сохранять кэшируемые файлы! Не забываем создать папку cache_files внутри папки с manage.py
-#     }
-# }
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "cache_table",
+    },
+    "axes_cache": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+    },
+}
+
+QUERYCOUNT = {
+    "IGNORE_REQUEST_PATTERNS": [r".*jsi18n.*"],
+    "IGNORE_SQL_PATTERNS": [],
+    "THRESHOLDS": {
+        "MEDIUM": 50,
+        "HIGH": 200,
+        "MIN_TIME_TO_LOG": 0,
+        "MIN_QUERY_COUNT_TO_LOG": 0,
+    },
+    "DISPLAY_DUPLICATES": None,
+    "RESPONSE_HEADER": "X-DjangoQueryCount-Count",
+}
+
+# Sentry logging
+# SENTRY_ENVIRONMENT = env("DJANGO_SENTRY_ENVIRONMENTS")
+# if os.environ.get("DJANGO_SENTRY_DSN"):
+#     import sentry_sdk
+#     from ai_django_core.sentry.helpers import strip_sensitive_data_from_sentry_event
+#     from sentry_sdk.integrations.django import DjangoIntegration
+#
+#     sentry_sdk.init(
+#         env("DJANGO_SENTRY_DSN"),
+#         integrations=[DjangoIntegration()],
+#         max_breadcrumbs=50,
+#         debug=DEBUG,
+#         environment=SENTRY_ENVIRONMENT,
+#         server_name=FRONTEND_URL,
+#         send_default_pii=True,
+#         before_send=strip_sensitive_data_from_sentry_event,
+#     )
