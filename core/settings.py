@@ -115,12 +115,6 @@ CSP_DEFAULT_SRC = (
 
 # Cross-site request forgery
 CSRF_USE_SESSIONS = True
-# CSRF_TRUSTED_ORIGINS = [
-#     "localhost:3000",
-#     "localhost:8000",
-#     "127.0.0.1:3000",
-#     "127.0.0.1:8000",
-# ]
 
 # Axes config
 LOGIN_TIMEDELTA = 15 * 60
@@ -216,7 +210,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# настройки почты
+# email settings
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 465
