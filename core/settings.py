@@ -13,8 +13,10 @@ env = environ.Env(
     # django
     DJANGO_ADMINS=(list, []),
     DJANGO_ALLOWED_HOSTS=(list, ["127.0.0.1", "localhost", "0.0.0.0"]),
+    DJANGO_STATIC_ROOT=(str, "staticfiles"),
+    DJANGO_MEDIA_ROOT=(str, "media"),
     DJANGO_SECURE_HSTS_SECONDS=(int, 0),
-    DJANGO_SESSION_COOKIE_SECURE=(bool, True),
+    DJANGO_SESSION_COOKIE_SECURE=(bool, False),
     # Emailing
     DJANGO_DEFAULT_FROM_EMAIL=(
         str,
@@ -98,7 +100,7 @@ CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
 
 # Referrer-Policy middleware
 REFERRER_POLICY = "same-origin"
-# URL_PROTOCOL = "https://" if SESSION_COOKIE_SECURE else "http://"
+URL_PROTOCOL = "https://" if SESSION_COOKIE_SECURE else "http://"
 
 # CSP config
 CSP_DEFAULT_SRC = (
@@ -200,10 +202,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = env("DJANGO_STATIC_ROOT")
+
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = env("DJANGO_MEDIA_ROOT")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -269,16 +273,6 @@ LOGGING = {
         },
     },
 }
-#
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-#         "LOCATION": "cache_table",
-#     },
-#     "axes_cache": {
-#         "BACKEND": "django.core.cache.backends.dummy.DummyCache",
-#     },
-# }
 
 QUERYCOUNT = {
     "IGNORE_REQUEST_PATTERNS": [r".*jsi18n.*"],
