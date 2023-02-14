@@ -14,7 +14,7 @@ env = environ.Env(
     DJANGO_ADMINS=(list, []),
     DJANGO_ALLOWED_HOSTS=(list, ["127.0.0.1", "localhost", "0.0.0.0"]),
     DJANGO_SECURE_HSTS_SECONDS=(int, 0),
-    DJANGO_SESSION_COOKIE_SECURE=(bool, True),
+    DJANGO_SESSION_COOKIE_SECURE=(bool, False),
     # Emailing
     DJANGO_DEFAULT_FROM_EMAIL=(
         str,
@@ -98,7 +98,7 @@ CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
 
 # Referrer-Policy middleware
 REFERRER_POLICY = "same-origin"
-URL_PROTOCOL = "https://" if SESSION_COOKIE_SECURE else "http://"
+# URL_PROTOCOL = "https://" if SESSION_COOKIE_SECURE else "http://"
 
 # CSP config
 CSP_DEFAULT_SRC = (
@@ -219,66 +219,66 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_SSL = True
 
 ADMINS = [
-    ("Admin", "garmonia.eisner@gmail.com"),
+    ("Admin", "konig_39@mail.de"),
 ]
 SERVER_EMAIL = env("SERVER_EMAIL")
 # Logging
-DB_LOGGER_ENTRY_LIFETIME = 30
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "filters": {
-        "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"},
-        "require_debug_true": {
-            "()": "django.utils.log.RequireDebugTrue",
-        },
-    },
-    "formatters": {
-        "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
-        },
-    },
-    "handlers": {
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },
-        "db_handler": {
-            "level": "DEBUG",
-            "class": "django_db_logger.db_log_handler.DatabaseLogHandler",
-            "formatter": "verbose",
-        },
-    },
-    "loggers": {
-        "system": {
-            "level": "INFO",
-            "handlers": ["console", "db_handler"],
-            "propagate": True,
-        },
-        "async": {
-            "level": "INFO",
-            "handlers": ["console", "db_handler"],
-            "propagate": True,
-        },
-        "django_scrubber": {
-            "level": "DEBUG",
-            "handlers": ["console"],
-            "propagate": True,
-        },
-    },
-}
-
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-        "LOCATION": "cache_table",
-    },
-    "axes_cache": {
-        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
-    },
-}
+# DB_LOGGER_ENTRY_LIFETIME = 30
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "filters": {
+#         "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"},
+#         "require_debug_true": {
+#             "()": "django.utils.log.RequireDebugTrue",
+#         },
+#     },
+#     "formatters": {
+#         "verbose": {
+#             "format": "%(levelname)s %(asctime)s %(module)s "
+#             "%(process)d %(thread)d %(message)s"
+#         },
+#     },
+#     "handlers": {
+#         "console": {
+#             "level": "DEBUG",
+#             "class": "logging.StreamHandler",
+#             "formatter": "verbose",
+#         },
+#         "db_handler": {
+#             "level": "DEBUG",
+#             "class": "django_db_logger.db_log_handler.DatabaseLogHandler",
+#             "formatter": "verbose",
+#         },
+#     },
+#     "loggers": {
+#         "system": {
+#             "level": "INFO",
+#             "handlers": ["console", "db_handler"],
+#             "propagate": True,
+#         },
+#         "async": {
+#             "level": "INFO",
+#             "handlers": ["console", "db_handler"],
+#             "propagate": True,
+#         },
+#         "django_scrubber": {
+#             "level": "DEBUG",
+#             "handlers": ["console"],
+#             "propagate": True,
+#         },
+#     },
+# }
+#
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+#         "LOCATION": "cache_table",
+#     },
+#     "axes_cache": {
+#         "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+#     },
+# }
 
 QUERYCOUNT = {
     "IGNORE_REQUEST_PATTERNS": [r".*jsi18n.*"],
