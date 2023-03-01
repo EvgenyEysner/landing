@@ -3,8 +3,7 @@
       <div class="container"><a class="brand wow blurIn" href="{% url 'home' %}"><img
             src="{% static 'images/logo_1.svg' %}" alt="" width="124" height="132" /></a>
         <ul class="contacts-modern footer-classic-list">
-          <li class="wow fadeInLeft"><a class="heading-3" href="tel:#">0157-57470753</a></li>
-          <li class="wow fadeInRight"><a class="heading-3" href="mailto:#">moin@elektroservice-koenig.de </a></li>
+            {% include 'snippets/imprint.html' %}
         </ul>
         <ul class="list-inline list-inline-xxl list-social footer-classic-list">
             {% get_social_links as social_links %}

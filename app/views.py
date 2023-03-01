@@ -1,13 +1,7 @@
-# from datetime import datetime
-# from django.core.mail import send_mail, BadHeaderError
-# from django.http import HttpResponse
-# from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
+
 from .forms import FormContact
-
-
-# from .models import Contact
 
 
 class IndexView(TemplateView, FormView):

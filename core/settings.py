@@ -12,7 +12,10 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 env = environ.Env(
     # django
     DJANGO_ADMINS=(list, []),
-    DJANGO_ALLOWED_HOSTS=(list, ["127.0.0.1", "localhost", "0.0.0.0"]),
+    DJANGO_ALLOWED_HOSTS=(
+        list,
+        ["127.0.0.1", "localhost", "0.0.0.0", "elektroservice-koenig.de"],
+    ),
     DJANGO_STATIC_ROOT=(str, "staticfiles"),
     DJANGO_MEDIA_ROOT=(str, "media"),
     DJANGO_SECURE_HSTS_SECONDS=(int, 0),
