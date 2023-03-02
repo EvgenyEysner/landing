@@ -639,6 +639,7 @@
         </div>
     </section>
     {% include 'snippets/privacy.html' %}
+    {% include 'snippets/imprint.html' %}
     <!-- Footer -->
     {% include 'snippets/footer.html' %}
     {% include 'snippets/cookie.html' %}
@@ -652,21 +653,22 @@
 {% block javascript %}
 <script>
     $(document).ready(function () {
+        // Privacy Modal
         $("#privacy-modal").click(function () {
             $("#modal").modal();
         });
-        $(".close").click(function () {
-            $("#modal").modal('hide');
+        // Imprint Modal
+        $("#imprint-modal").click(function () {
+            $("#imprintModal").modal();
         });
         if ($.cookie('is_cookie_compliance_accepted')) {
             // We don't need show popup, when cookies are set
             return
         } else {
             // Open Cookie Modal
-            $(document).ready(function () {
-                $('#cookieModal').modal('show');
-            });
+            $('#cookieModal').modal('show');
         }
+
         // Set Cookies
         function setCookie(cname, cvalue, exdays) {
             var d = new Date();
