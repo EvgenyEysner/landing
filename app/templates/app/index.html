@@ -34,22 +34,6 @@
                 {% for img in images %}
                 <div class="swiper-slide context-dark" data-slide-bg="{{img.image.url}}">
                     <div class="swiper-slide-caption project-modern">
-                        <ul class="project-modern-info">
-                            <li class="
-                  heading-6
-                  project-modern-info-item project-modern-address
-                " data-caption-animate="fadeInDown" data-caption-delay="200">
-                                {{img.location}}
-                            </li>
-                            <li class="heading-6 project-modern-info-item" data-caption-animate="fadeInDown"
-                                data-caption-delay="100">
-                                {{img.square}}
-                            </li>
-                            <li class="heading-6 project-modern-info-item" data-caption-animate="fadeInDown"
-                                data-caption-delay="0">
-                                {{img.price}}
-                            </li>
-                        </ul>
                         <div class="project-modern-decor" data-caption-animate="fadeInRight"
                              data-caption-delay="0"></div>
                     </div>
@@ -58,6 +42,7 @@
                 <!-- Swiper Pagination-->
                 <!--.swiper-pagination-->
             </div>
+        </div>
     </section>
     <section class="
       section
@@ -80,11 +65,11 @@
                       linearicons-apartment
                     "></div>
                                     <h6 class="box-icon-classic-title">
-                                        <a href="#">Architektur</a>
+                                        <a href="#">Solaranlagen</a>
                                     </h6>
                                 </div>
                                 <div class="box-icon-classic-text">
-                                    Wir bieten hochwertige Architekturleistungen.
+                                    Wir bieten hochwertige Solaranlagen.
                                 </div>
                             </article>
                         </div>
@@ -93,12 +78,12 @@
                                 <div class="box-icon-classic-header">
                                     <div class="box-icon-classic-icon novi-icon linearicons-pen2"></div>
                                     <h6 class="box-icon-classic-title">
-                                        <a href="#">Innenarchitektur</a>
+                                        <a href="#">Elektroinstallation</a>
                                     </h6>
                                 </div>
                                 <div class="box-icon-classic-text">
                                     Unser Team bietet einzigartige und stilvolle
-                                    Architekturlösungen.
+                                    Lösungen.
                                 </div>
                             </article>
                         </div>
@@ -120,7 +105,7 @@
                     <div class="inset-xl-left-35">
                         <h3 class="wow fadeInRight">
                             Finden Sie den Preis <br/>
-                            Ihres Hauses heraus
+                            Ihre Solaranlage
                         </h3>
                         <h6 class="title-style-1 wow fadeInRight" data-wow-delay=".05s">
                             Wir werden Sie innerhalb von 24 Stunden kontaktieren
@@ -314,6 +299,7 @@
               row row-30 row-md-50
               justify-content-center justify-content-md-start
             ">
+                        <!---- ToDO Jahr automatisch berechnen -->
                         <div class="col-6 col-sm-4 col-md-12 col-lg-11 wow fadeInRight">
                             <article class="counter-classic">
                                 <div class="counter-classic-header">
@@ -323,7 +309,7 @@
                                     <h6 class="counter-classic-title">Jahre</h6>
                                 </div>
                                 <div class="counter-classic-text">
-                                    Wir sind seit 2011 in der Branche tätig.
+                                    Wir sind seit 2017 in der Branche tätig.
                                 </div>
                             </article>
                         </div>
@@ -331,12 +317,12 @@
                             <article class="counter-classic">
                                 <div class="counter-classic-header">
                                     <div class="heading-1 counter-classic-number">
-                                        <span class="counter">54</span>
+                                        <span class="counter">650</span>
                                     </div>
                                     <h6 class="counter-classic-title">Projekten</h6>
                                 </div>
                                 <div class="counter-classic-text">
-                                    Bis heute haben wir 54 Bauprojekte fertiggest
+                                    Bis heute haben wir über 650 Projekte fertiggestellt
                                 </div>
                             </article>
                         </div>
@@ -392,99 +378,28 @@
                             </a>
                         </div>
                     </div>
-                    <div class="project-mary-content">
-                        <ul class="project-mary-panel">
-                            <li class="project-mary-panel-item">
-                                <time class="project-mary-time" datetime="2019-03-15">{{item.status}}</time>
-                            </li>
-                            <li class="project-mary-panel-item">
-                                <div class="project-mary-tag">{{item.name}}</div>
-                            </li>
-                        </ul>
-                        <h3 class="project-mary-title">
-                            {{item.location}}
-                        </h3>
-                        <p class="project-mary-text">
-                            {{item.description}}
-                        </p>
-                    </div>
+                    <!--                    <div class="project-mary-content">-->
+                    <!--                        <ul class="project-mary-panel">-->
+                    <!--                            <li class="project-mary-panel-item">-->
+                    <!--                                <time class="project-mary-time" datetime="2019-03-15">{{item.status}}</time>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="project-mary-panel-item">-->
+                    <!--                                <div class="project-mary-tag">{{item.name}}</div>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                        <h3 class="project-mary-title">-->
+                    <!--                            {{item.location}}-->
+                    <!--                        </h3>-->
+                    <!--                        <p class="project-mary-text">-->
+                    <!--                            {{item.description}}-->
+                    <!--                        </p>-->
+                    <!--                    </div>-->
                 </article>
                 {% endfor %}
             </div>
         </div>
     </section>
-    <section class="
-      section
-      novi-background
-      bg-cover
-      section-xl
-      bg-white
-      text-center
-      decoration-1
-    ">
-        <div class="container">
-            <h3 class="wow fadeInRight">
-                Find new ideas and<br/>inspiration in our blog
-            </h3>
-            <h6 class="title-style-1 wow fadeInLeft">Latest blog posts</h6>
-            <div class="
-          row row-xl row-30
-          justify-content-center justify-content-xl-between
-        ">
-                <div class="col-sm-6 col-md-4 col-xl-3 wow fadeInUp" data-wow-delay=".05s">
-                    <article class="post-classic">
-                        <div class="heading-3 post-classic-time">
-                            <time datetime="2019-06-19">June 19, 2019</time>
-                        </div>
-                        <a class="post-classic-figure" href="#"><img src="{% static 'images/post-1-270x182.jpg' %}"
-                                                                     alt=""
-                                                                     width="270" height="182"/></a>
-                        <h5 class="post-classic-title">
-                            <a href="#">How Art Influences Modern Architecture</a>
-                        </h5>
-                        <p class="post-classic-text">
-                            Looking through our recent, impactful projects, we set out to ask
-                            the designers about their opinion...
-                        </p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 wow fadeInUp">
-                    <article class="post-classic">
-                        <div class="heading-3 post-classic-time">
-                            <time datetime="2019-05-30">May 30, 2019</time>
-                        </div>
-                        <a class="post-classic-figure" href="#"><img src="{% static 'images/post-2-270x182.jpg' %}"
-                                                                     alt=""
-                                                                     width="270" height="182"/></a>
-                        <h5 class="post-classic-title">
-                            <a href="#">New Trends in Architecture: overview</a>
-                        </h5>
-                        <p class="post-classic-text">
-                            Architecture is constantly evolving based on changes in our
-                            culture, society and the environment. While...
-                        </p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xl-3 wow fadeInUp" data-wow-delay=".05s">
-                    <article class="post-classic">
-                        <div class="heading-3 post-classic-time">
-                            <time datetime="2019-04-15">April 15, 2019</time>
-                        </div>
-                        <a class="post-classic-figure" href="#"><img src="{% static 'images/post-3-270x182.jpg' %}"
-                                                                     alt=""
-                                                                     width="270" height="182"/></a>
-                        <h5 class="post-classic-title">
-                            <a href="#">Working with an Architect: 10 useful tips</a>
-                        </h5>
-                        <p class="post-classic-text">
-                            A skilled architect will elevate the work you do to your home from
-                            the ordinary to the wonderful. Here’s...
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Eventuell Blog -->
     <section class="
       section
       novi-background
@@ -499,9 +414,9 @@
                 <article class="quote-classic">
                     <div class="quote-classic-text">
                         <div class="q">
-                            I have worked with many companies offering design &amp;
-                            architecture services, and out of all you were one who really
-                            stood out from the rest and did a great job.
+                            Beim König 39 können man, auf qualifizierte und zuverlässige Partner
+                            setzen, um hochwertige Arbeit und professionelle Ergebnisse zu gewährleisten. Wenn ich
+                            Fragen oder Anliegen haben, waren die stets zur Verfügung.
                         </div>
                     </div>
                     <div class="
@@ -512,12 +427,11 @@
             ">
                         <div class="unit-left">
                             <div class="quote-classic-figure">
-                                <img src="{% static 'images/user-1-80x80.jpg' %}" alt="" width="80" height="80"/>
+                                <img src="{% static 'images/user-dummy.png' %}" alt="" width="80" height="80"/>
                             </div>
                         </div>
                         <div class="unit-body">
-                            <div class="quote-classic-author">kate williams</div>
-                            <div class="quote-classic-status">Entrepreneur</div>
+                            <div class="quote-classic-author">Erik Ziegler</div>
                         </div>
                     </div>
                     <div class="quote-classic-decor-wrap">
@@ -528,9 +442,9 @@
                 <article class="quote-classic">
                     <div class="quote-classic-text">
                         <div class="q">
-                            I was looking for top-notch creativity and quality service and I
-                            found what I needed in your team. You took all my ideas and
-                            demands into consideration and made a great project.
+                            Ich war auf der Suche nach erstklassiger Service, und in
+                            Ihrem Team, fand ich was ich brauchte. Sie haben alle meine Ideen und
+                            Anforderungen berücksichtigt und ein großartiges Projekt geschaffen.
                         </div>
                     </div>
                     <div class="
@@ -545,8 +459,7 @@
                             </div>
                         </div>
                         <div class="unit-body">
-                            <div class="quote-classic-author">Ann Lee</div>
-                            <div class="quote-classic-status">Freelancer</div>
+                            <div class="quote-classic-author">Simone Kruger</div>
                         </div>
                     </div>
                     <div class="quote-classic-decor-wrap">
@@ -557,9 +470,8 @@
                 <article class="quote-classic">
                     <div class="quote-classic-text">
                         <div class="q">
-                            I selected Spectrum because of their architects’ rigorous design
-                            background and education. They exceeded my expectations and did a
-                            great a job on extending and redesigning my house.
+                            Die Zusammenarbeit mit König im Bereich Solarinstallation, war eine
+                            nachhaltige und zukunftsorientierte Entscheidung!
                         </div>
                     </div>
                     <div class="
@@ -574,8 +486,7 @@
                             </div>
                         </div>
                         <div class="unit-body">
-                            <div class="quote-classic-author">Sam McMillan</div>
-                            <div class="quote-classic-status">Manager</div>
+                            <div class="quote-classic-author">Niklas Friedman</div>
                         </div>
                     </div>
                     <div class="quote-classic-decor-wrap">
