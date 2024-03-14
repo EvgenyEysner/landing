@@ -1,72 +1,82 @@
+{% load static %}
 <section class="
-      section
       novi-background
       bg-cover
       section-xl
       bg-white
-      text-center
-      decoration-1
+      text-start
+      table-responsive
     ">
     <div class="container">
-        <h3 class="wow fadeInRight">
-            Find new ideas and<br/>inspiration in our blog
-        </h3>
-        <h6 class="title-style-1 wow fadeInLeft">Latest blog posts</h6>
-        <div class="
-          row row-xl row-30
-          justify-content-center justify-content-xl-between
-        ">
-            <div class="col-sm-6 col-md-4 col-xl-3 wow fadeInUp" data-wow-delay=".05s">
-                <article class="post-classic">
-                    <div class="heading-3 post-classic-time">
-                        <time datetime="2019-06-19">June 19, 2019</time>
-                    </div>
-                    <a class="post-classic-figure" href="#"><img src="{% static 'images/post-1-270x182.jpg' %}"
-                                                                 alt=""
-                                                                 width="270" height="182"/></a>
-                    <h5 class="post-classic-title">
-                        <a href="#">How Art Influences Modern Architecture</a>
-                    </h5>
-                    <p class="post-classic-text">
-                        Looking through our recent, impactful projects, we set out to ask
-                        the designers about their opinion...
-                    </p>
-                </article>
-            </div>
-            <div class="col-sm-6 col-md-4 col-xl-3 wow fadeInUp">
-                <article class="post-classic">
-                    <div class="heading-3 post-classic-time">
-                        <time datetime="2019-05-30">May 30, 2019</time>
-                    </div>
-                    <a class="post-classic-figure" href="#"><img src="{% static 'images/post-2-270x182.jpg' %}"
-                                                                 alt=""
-                                                                 width="270" height="182"/></a>
-                    <h5 class="post-classic-title">
-                        <a href="#">New Trends in Architecture: overview</a>
-                    </h5>
-                    <p class="post-classic-text">
-                        Architecture is constantly evolving based on changes in our
-                        culture, society and the environment. While...
-                    </p>
-                </article>
-            </div>
-            <div class="col-sm-6 col-md-4 col-xl-3 wow fadeInUp" data-wow-delay=".05s">
-                <article class="post-classic">
-                    <div class="heading-3 post-classic-time">
-                        <time datetime="2019-04-15">April 15, 2019</time>
-                    </div>
-                    <a class="post-classic-figure" href="#"><img src="{% static 'images/post-3-270x182.jpg' %}"
-                                                                 alt=""
-                                                                 width="270" height="182"/></a>
-                    <h5 class="post-classic-title">
-                        <a href="#">Working with an Architect: 10 useful tips</a>
-                    </h5>
-                    <p class="post-classic-text">
-                        A skilled architect will elevate the work you do to your home from
-                        the ordinary to the wonderful. Here’s...
-                    </p>
-                </article>
-            </div>
+        <div class="d-flex flex-column align-items-center mb-3">
+            <img src="{% static 'images/logo_1.svg' %}" height="500" width="500">
+            <h3 class="wow fadeInRight" style="margin-top: 20px;">
+                Unseres Angebot
+            </h3>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th class="col-1">Pos.</th>
+                <th class="col-5">Bezeichnung</th>
+                <th class="col-1">Menge</th>
+                <th scope="col-1">Einh.</th>
+                <th class="col-2">Preis</th>
+                <th class="col-2">Gesamt</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>
+                    Photovoltaik Generatorfläche 5,22kWp inkl. Module
+                    und Unterkonstruktion, Solarkabel, Erdung etc. 1x
+                    Modulfläche 12 stk Trina 435Wp Module Vollschwarz N-
+                    Typ TOP-CON, Glas, Bifazial 25 Jahre Produktgarantie
+                    des Herstellerslineare Leistungsgarantie des
+                    Herstellers über 30 Jahre An Statik angepasstes
+                    Montagegestell: Aluminnium Edelstahl in
+                    Silber,Bestigungsklemmen in Schwarz. Gesamtleistung
+                    der Anlage knn durch Abweichungen in der
+                    Modulleistung je nach Verfügbarkeit variiren!
+                    </br>
+                    <b>Inkl. Lieferung und Montage</b>
+                </td>
+                <td>1</td>
+                <td>Stück</td>
+                <td>5.150,00 €</td>
+                <td>5.150,00 €</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>
+                    Huawei Hybrd-Wechselrichter und Speicherpaket - 5kW/5kWh
+                    HUAWEI SUN2000-5KTL-M1-(13.5A) 3ph
+                    -HUAWEI Smart Power Sensor DTSU666-H 100A
+                    -HUAWEI LUNA2000-5-SO-Speicherpaket 5kWh Inkl.
+                    Lieferung,AC-Montage,Kundeneinweißung
+                </td>
+                <td>1</td>
+                <td>Stück</td>
+                <td>6.850,00 €</td>
+                <td>6.850,00 €</td>
+            </tr>
+            <tr>
+                <th scope="row">Gesamtbetrag</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>12.000,00 €</td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <p class="font-weight-bold">
+                Gemäß § 13 b Abs. 5 UStG sind Sie als Leistungsempfänger Schuldner der Umsatzsteuer.
+                </br>
+                Zahlungsbedingung: Zahlbar innerhalb 7 Tagen ohne Abzug ab Rechnungsdatum.
+            </p>
         </div>
     </div>
 </section>
