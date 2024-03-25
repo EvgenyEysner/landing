@@ -1,4 +1,4 @@
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -22,6 +22,28 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"Name: {self.name}"
+
+
+class Rating(models.Model):
+    """
+    Create rating model
+    """
+    star = models.IntegerField("Bewertung", default=0, validators=[
+        MaxValueValidator(5),
+        MinValueValidator(0),
+    ])
+    address = models.CharField("Adresse", max_length=256, blank=True)
+    team = models.CharField("Team", max_length=128)
+    review = models.TextField("Nachricht", max_length=500, null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Bewertung"
+        verbose_name_plural = "Bewertungen"
+        ordering = ["-created"]
+
+    def __str__(self):
+        return f"Team: {self.team}"
 
 
 class Social(models.Model):
