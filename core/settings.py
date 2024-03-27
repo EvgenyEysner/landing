@@ -222,6 +222,8 @@ EMAIL_USE_SSL = True
 
 ADMINS = [
     ("Victor", "konig_39@mail.de"),
+    ("Evgeny", "eugen.eisner@gmail.com"),
+    ("Elektroservice", "moin@elektroservice-koenig.de"),
 ]
 SERVER_EMAIL = env("SERVER_EMAIL")
 # Logging
