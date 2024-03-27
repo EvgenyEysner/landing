@@ -1,11 +1,7 @@
-from django.http import JsonResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact, FormReview
-from .models import Rating, Contact
-from .services.customer_email import send_email
 
 
 class IndexView(TemplateView, FormView):
@@ -23,34 +19,6 @@ class IndexView(TemplateView, FormView):
             self.object.save()
 
         return super().form_valid(form)
-
-
-class ContactView(TemplateView):
-    template_name = "app/contact.html"
-    success_url = reverse_lazy("home/")
-
-    def post(self, request, *args, **kwargs):
-        if request.POST:
-            form = FormContact(request.POST)
-            if form.is_valid():
-                # Form fields passed validation
-                cd = form.cleaned_data
-                name = f"{cd['name']}"
-                email = f"{cd['email']}"
-                phone = f"{cd['phone']}"
-                text = f"{cd['text']}"
-                send_email(name, email, phone, text)
-                Contact.objects.create(name=name, email=email, phone=phone, text=text)
-                return redirect(reverse_lazy("/"))
-            return form
-
-    # def form_valid(self, form):
-    #     if self.request.POST:
-    #         self.object = form.save(commit=False)
-    #         self.object.save()
-    #         return HttpResponseRedirect(self.success_url)
-    #
-    #     return super().form_valid(form)
 
 
 class ReviewView(TemplateView, FormView):
