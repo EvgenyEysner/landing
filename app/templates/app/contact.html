@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-6">
+            <div class="card">
+                <h5 class="card-header text-center bg-transparent">Anfrage</h5>
+                <div class="card-body p-4">
+                    <form class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact"
+                          method="post" action=".">
+                        {% csrf_token %}
+                        <div class="form-wrap" id="price">
+                            <label class="form-label" for="contact-name">Name</label>
+                            <input class="form-input" id="contact-name" type="text" name="name"
+                                   data-constraints="@Required"/>
+                        </div>
+                        <div class="form-wrap">
+                            <label class="form-label" for="contact-email">Email</label>
+                            <input class="form-input" id="contact-email" type="email" name="email"
+                                   data-constraints="@Required @Email"/>
+                        </div>
+                        <div class="form-wrap">
+                            <label class="form-label" for="contact-phone">Telefon</label>
+                            <input class="form-input" id="contact-phone" type="text" name="phone"
+                                   data-constraints="@Required @PhoneNumber"/>
+                        </div>
+                        <div class="form-wrap">
+                            <textarea class="form-input" type="text" name="text"
+                                      placeholder="Ihre Nachricht"></textarea>
+                        </div>
+                        <div class="form-button">
+                            <button class="button button-jerry button-primary" type="submit">
+                                Senden<span class="button-jerry-line"></span><span
+                                    class="button-jerry-line"></span><span
+                                    class="button-jerry-line"></span><span class="button-jerry-line"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="{% static 'js/core.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% include "snippets/footer.html" %}
+</body>
+</html>

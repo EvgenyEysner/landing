@@ -214,14 +214,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5 MB
 # email settings
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.strato.de"
 EMAIL_PORT = 465
 EMAIL_HOST_USER = env("SERVER_EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_SSL = True
 
 ADMINS = [
-    ("Admin", "konig_39@mail.de"),
+    ("Victor", "konig_39@mail.de"),
 ]
 SERVER_EMAIL = env("SERVER_EMAIL")
 # Logging
@@ -238,7 +238,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         },
     },
     "handlers": {

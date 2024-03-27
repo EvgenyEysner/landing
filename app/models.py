@@ -13,6 +13,7 @@ class Contact(models.Model):
         validators=[phone_regex], max_length=16, blank=True
     )  # Validator soll eine Liste sein
     email = models.EmailField("email", max_length=254)
+    text = models.TextField("text", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

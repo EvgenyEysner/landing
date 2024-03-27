@@ -7,7 +7,7 @@ from .models import *
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     date_hierarchy = "created"
-    list_display = ["name", "phone", "email", "created"]
+    list_display = ["name", "phone", "email", "text", "created"]
 
 
 @admin.register(Slider)
