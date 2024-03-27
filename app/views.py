@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
@@ -13,12 +14,13 @@ class IndexView(TemplateView, FormView):
         if self.request.POST.get("form_type") == "form_1":
             self.object = form.save(commit=False)
             self.object.save()
+            return super().form_valid(form)
 
         elif self.request.POST.get("form_type") == "form_2":
             self.object = form.save(commit=False)
             self.object.save()
-
-        return super().form_valid(form)
+            return super().form_valid(form)
+        return redirect(self.success_url)
 
 
 class ReviewView(TemplateView, FormView):
