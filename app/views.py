@@ -1,8 +1,12 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact, FormReview
+from .models import Rating
 
 
 class IndexView(TemplateView, FormView):
@@ -14,35 +18,37 @@ class IndexView(TemplateView, FormView):
         if self.request.POST.get("form_type") == "form_1":
             self.object = form.save(commit=False)
             self.object.save()
-            return super().form_valid(form)
 
         elif self.request.POST.get("form_type") == "form_2":
             self.object = form.save(commit=False)
             self.object.save()
-            return super().form_valid(form)
-        return redirect(self.success_url)
+        return super().form_valid(form)
 
 
-class ReviewView(TemplateView, FormView):
+class ReviewView(TemplateView):
     template_name = "app/review.html"
-    form_class = FormReview
-    success_url = reverse_lazy("home")
 
-    # def post(self, request, *args, **kwargs):
-    #     if request.method == "POST":
-    #         form = FormReview(request.POST)
-    #         print(form)
-    #         if form.is_valid():
-    #             return HttpResponseRedirect(self.success_url)
+    def post(self, request, *args, **kwargs):
+        response_data = {}
+        if request.method == "POST":
+            team = request.POST.get("team")
+            text = request.POST.get("text")
+            star = request.POST.get("star")
 
 
-# def rate_image(request):
-#     if request.method == "POST":
-#         el_id = request.POST.get("el_id")
-#         val = request.POST.get("val")
-#         print(val)
-#         obj = Rating.objects.get(id=el_id)
-#         obj.score = val
-#         obj.save()
-#         return JsonResponse({"success": "true", "score": val}, safe=False)
-#     return JsonResponse({"success": "false"})
+            rating = Rating.objects.create(team=team, review=text, star=1)
+            print("PRINT", request.POST)
+        #     response_data["result"] = "Create post successful!"
+        #     response_data["id"] = rating.pk
+        #     response_data["review"] = rating.review
+        #     response_data["team"] = rating.team
+        #     response_data["star"] = rating.star
+        #
+        #     return HttpResponse(
+        #         json.dumps(response_data), content_type="application/json"
+        #     )
+        # else:
+        #     return HttpResponse(
+        #         json.dumps({"nothing to see": "this isn't happening"}),
+        #         content_type="application/json",
+        #     )
