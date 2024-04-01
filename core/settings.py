@@ -19,7 +19,7 @@ env = environ.Env(
             "localhost",
             "0.0.0.0",
             "elektroservice-koenig.de",
-            "www.elektroservice-koenig.de",
+            # "www.elektroservice-koenig.de",
         ],
     ),
     DJANGO_STATIC_ROOT=(str, "staticfiles"),
