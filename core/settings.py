@@ -14,7 +14,13 @@ env = environ.Env(
     DJANGO_ADMINS=(list, []),
     DJANGO_ALLOWED_HOSTS=(
         list,
-        ["127.0.0.1", "localhost", "0.0.0.0", "elektroservice-koenig.de"],
+        [
+            "127.0.0.1",
+            "localhost",
+            "0.0.0.0",
+            "elektroservice-koenig.de",
+            "www.elektroservice-koenig.de",
+        ],
     ),
     DJANGO_STATIC_ROOT=(str, "staticfiles"),
     DJANGO_MEDIA_ROOT=(str, "media"),
@@ -240,7 +246,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-                      "%(process)d %(thread)d %(message)s"
+            "%(process)d %(thread)d %(message)s"
         },
     },
     "handlers": {
