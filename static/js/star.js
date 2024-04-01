@@ -48,39 +48,5 @@ form.addEventListener('submit', () => {
     window.location.reload()
 })
 
-// $('#contact-form').on('submit', function () {
-//     $.ajax({
-//         url: 'review/',
-//         type: 'POST',
-//         headers: {
-//             'X-CSRFToken': '{{ csrf_token }}',
-//         },
-//
-//         data: {
-//             team: $('#team').val(),
-//             text: $('#review').val(),
-//             user: $('#username').val(),
-//             star: $('#star').val(),
-//         },
-//
-//         // handle a successful response
-//         success: function (json) {
-//             // remove the value from the input
-//             $('#team').val(''),
-//                 $('#star').val(''),
-//                 $('#review').val(''),
-//                 console.log(json); // log the returned json to the console
-//             console.log("success"); // another sanity check
-//         },
-//         // handle a non-successful response
-//         error: function (xhr, errmsg, err) {
-//             $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: " + errmsg +
-//                 " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-//             console.log(xhr.status + ": " + xhr.responseText);
-//         }
-//     })
-//     window.location.reload()
-// })
-
 
 
