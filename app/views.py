@@ -1,4 +1,4 @@
-import requests
+# import requests
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
@@ -32,24 +32,24 @@ class ReviewView(TemplateView):
             team = request.POST.get("team")
             text = request.POST.get("review")
             star = request.POST.get("star")
-            username = request.POST.get("user")
+            username = request.POST.get("username")
             print(username)
             ip = request.META.get("REMOTE_ADDR")
 
-            response = requests.get(url=f"http://ip-api.com/json/{ip}").json()
+            # response = requests.get(url=f"http://ip-api.com/json/{ip}").json()
 
-            data = {
-                "country": response.get("country"),
-                "region": response.get("regionName"),
-                "city": response.get("city"),
-            }
+            # data = {
+            #     "country": response.get("country"),
+            #     "region": response.get("regionName"),
+            #     "city": response.get("city"),
+            # }
 
-            address = Address.objects.create(
-                country=data.get("country", 0),
-                region=data.get("region", 0),
-                city=data.get("city", 0),
-            )
+            # address = Address.objects.create(
+            #     country=data.get("country", 0),
+            #     region=data.get("region", 0),
+            #     city=data.get("city", 0),
+            # )
             Rating.objects.create(
-                team=team, review=text, star=star, address=address, username=username
+                team=team, review=text, star=star, username=username
             )
         return redirect(self.success_url)
