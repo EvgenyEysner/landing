@@ -1,21 +1,20 @@
 const ratingItemsList = document.querySelectorAll('.rating__item')
 const ratingItemsArray = Array.prototype.slice.call(ratingItemsList)
+const starsCount = document.getElementById('star')
+const address = document.getElementById('address')
 
 ratingItemsArray.forEach(item =>
     item.addEventListener('click', () => {
-        const {itemValue} = item.dataset
-        item.parentNode.dataset.totalValue = itemValue
+            const {itemValue} = item.dataset
+            item.parentNode.dataset.totalValue = itemValue
+            starsCount.value = itemValue
+            window.location.navigator
         }
     )
 )
 
 
-$('#contact-form').on('submit', function (){
-    // fetch('review/').then((response) => {
-    //     console.log(response)
-    // })
-    const stars = document.querySelector('#star')
-    console.log(stars)
+$('#contact-form').on('submit', function () {
     $.ajax({
         url: 'review/',
         type: 'POST',
@@ -26,16 +25,17 @@ $('#contact-form').on('submit', function (){
         data: {
             team: $('#team').val(),
             text: $('#review').val(),
-            star: 5,
+            user: $('#username').val(),
+            star: $('#star').val(),
         },
 
         // handle a successful response
         success: function (json) {
             // remove the value from the input
             $('#team').val(''),
-            $('#star').val(''),
-            $('#text').val(''),
-            console.log(json); // log the returned json to the console
+                $('#star').val(''),
+                $('#review').val(''),
+                console.log(json); // log the returned json to the console
             console.log("success"); // another sanity check
         },
         // handle a non-successful response
@@ -45,6 +45,7 @@ $('#contact-form').on('submit', function (){
             console.log(xhr.status + ": " + xhr.responseText);
         }
     })
+    window.location.reload()
 })
 
 

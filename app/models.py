@@ -25,17 +25,29 @@ class Contact(models.Model):
         return f"Name: {self.name}"
 
 
+class Address(models.Model):
+    city = models.CharField("Stadt", max_length=128, null=True)
+    region = models.CharField("Bundesland", max_length=128, null=True)
+    country = models.CharField("Land", max_length=128, null=True)
+
+
 class Rating(models.Model):
     """
     Create rating model
     """
-    star = models.IntegerField("Bewertung", default=0, validators=[
-        MaxValueValidator(5),
-        MinValueValidator(0),
-    ])
-    address = models.CharField("Adresse", max_length=256, blank=True)
+
+    star = models.IntegerField(
+        "Bewertung",
+        default=0,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(0),
+        ],
+    )
+    username = models.CharField("Name", max_length=128)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
     team = models.CharField("Team", max_length=128)
-    review = models.TextField("Nachricht", max_length=500, null=True, blank=True)
+    review = models.TextField("Nachricht", max_length=500, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -16,17 +16,22 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-6">
             <div class="card">
-                <h5 class="card-header text-center">Bewertung abgeben</h5>
+                <h5 class="card-header text-center bg-transparent">Bewertung abgeben</h5>
                 <div class="card-body p-4">
                     <form class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact"
-                          method="post" action="." id="contact-form">
+                          method="post" action="{% url 'review' %}" id="contact-form">
                         {% csrf_token %}
+                        <div class="form-wrap">
+                            <input class="form-input" id="username" type="text" name="username"
+                                   data-constraints="@Required"
+                                   placeholder="Name, Vorname"/>
+                        </div>
                         <div class="form-wrap">
                             <input class="form-input" id="team" type="text" name="team" data-constraints="@Required"
                                    placeholder="Team"/>
                         </div>
                         <div class="form-wrap text-center">
-                            <div class="rating d-inline-flex flex-row-reverse" data-total-value="0" id="star">
+                            <div class="rating d-inline-flex flex-row-reverse" data-total-value="0">
                                 <div class="rating__item fa-star fa-3x pl-3" data-item-value="5"></div>
                                 <div class="rating__item fa-star fa-3x pl-3" data-item-value="4"></div>
                                 <div class="rating__item fa-star fa-3x pl-3" data-item-value="3"></div>
@@ -34,6 +39,8 @@
                                 <div class="rating__item fa-star fa-3x pl-3" data-item-value="1"></div>
                             </div>
                         </div>
+                        <input type="number" id="star" class="d-none" name="star"/>
+                        <input type="text" id="address" class="d-none" name="address"/>
                         <div class="form-wrap border-top">
                             <textarea class="form-input" id="review" type="text" name="review"
                                       placeholder="Ihre Nachricht"></textarea>
