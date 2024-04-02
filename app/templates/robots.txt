@@ -4,5 +4,3 @@ Disallow: /junk/
 
 User-agent: GPTBot
 Disallow: /
-
-Disallow: /admin/
