@@ -4,13 +4,19 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact
-from .models import Rating, Address
+from .models import Rating
 
 
 class IndexView(TemplateView, FormView):
     template_name = "app/index.html"
     form_class = FormContact
     success_url = reverse_lazy("home")
+
+    # ToDo add to index.html
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reviews"] = Rating.objects.all()
+        return context
 
     def form_valid(self, form):
         if self.request.POST.get("form_type") == "form_1":
@@ -49,7 +55,5 @@ class ReviewView(TemplateView):
             #     region=data.get("region", 0),
             #     city=data.get("city", 0),
             # )
-            Rating.objects.create(
-                team=team, review=text, star=star, username=username
-            )
+            Rating.objects.create(team=team, review=text, star=star, username=username)
         return redirect(self.success_url)
