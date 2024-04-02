@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
     "django_extensions",
     "app",
     "axes",
@@ -86,6 +88,8 @@ MIDDLEWARE = [
     # you can skip installing the middleware and use your own views.
     "axes.middleware.AxesMiddleware",
 ]
+
+SITE_ID = 1
 
 CSRF_COOKIE_SECURE = True
 ROOT_URLCONF = "core.urls"
@@ -128,9 +132,11 @@ CSRF_USE_SESSIONS = True
 
 # Axes config
 LOGIN_TIMEDELTA = 15 * 60
-AXES_FAILURE_LIMIT = 25
+AXES_ENABLED = True
+AXES_FAILURE_LIMIT = 3
+AXES_LOCK_OUT_AT_FAILURE = True
 AXES_COOLOFF_TIME = datetime.timedelta(0, LOGIN_TIMEDELTA)
-AXES_DISABLE_ACCESS_LOG = True
+AXES_DISABLE_ACCESS_LOG = False
 AXES_META_PRECEDENCE_ORDER = (  # Copied from django-ipware as that is apparently not set by default
     "HTTP_X_FORWARDED_FOR",
     "X_FORWARDED_FOR",  # <client>, <proxy1>, <proxy2>
@@ -141,9 +147,15 @@ AXES_META_PRECEDENCE_ORDER = (  # Copied from django-ipware as that is apparentl
     "HTTP_FORWARDED_FOR",
     "HTTP_FORWARDED",
     "HTTP_VIA",
+    "REMOTE_ADDR",
 )
 # Block by Username only (i.e.: Same user different IP is still blocked, but different user same IP is not)
 AXES_ONLY_USER_FAILURES = True
+AXES_VERBOSE = True
+AXES_IP_BLACKLIST = ()
+AXES_ENABLE_ACCESS_FAILURE_LOG = True
+AXES_HTTP_RESPONSE_CODE = 429
+AXES_LOCKOUT_PARAMETERS = ["ip_address", ["username", "user_agent"]]
 
 TEMPLATES = [
     {
@@ -246,7 +258,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         },
     },
     "handlers": {
