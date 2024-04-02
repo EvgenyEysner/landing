@@ -152,7 +152,7 @@ AXES_META_PRECEDENCE_ORDER = (  # Copied from django-ipware as that is apparentl
 # Block by Username only (i.e.: Same user different IP is still blocked, but different user same IP is not)
 AXES_ONLY_USER_FAILURES = True
 AXES_VERBOSE = True
-AXES_IP_BLACKLIST = ()
+AXES_IP_BLACKLIST = env.list("BLACKLIST")
 AXES_ENABLE_ACCESS_FAILURE_LOG = True
 AXES_HTTP_RESPONSE_CODE = 429
 AXES_LOCKOUT_PARAMETERS = ["ip_address", ["username", "user_agent"]]
@@ -258,7 +258,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-                      "%(process)d %(thread)d %(message)s"
+            "%(process)d %(thread)d %(message)s"
         },
     },
     "handlers": {
