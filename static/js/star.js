@@ -13,8 +13,6 @@ ratingItemsArray.forEach(item =>
             const {itemValue} = item.dataset
             item.parentNode.dataset.totalValue = itemValue
             starsCount.value = itemValue
-            address.value = navigator.geolocation.getCurrentPosition(showPosition);
-            console.log(address)
             window.location.navigator
         }
     )
