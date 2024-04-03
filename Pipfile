@@ -25,6 +25,7 @@ django-querycount = "==0.7.0"                # Simple performance monitoring mid
 django-mysql = "==4.7.1"                    # Django-MySQL extends Django’s built-in MySQL and MariaDB support
 setuptools = "*"
 requests = "==2.31.0"
+django-jazzmin = "==2.6.1"
 
 [requires]
 python_version = "3.8"

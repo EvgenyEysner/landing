@@ -426,89 +426,38 @@
                 <div class="owl-carousel owl-style-2" data-loop="true" data-autoplay="true" data-items="1"
                      data-margin="30"
                      data-dots="true" data-mouse-drag="false" data-animation-in="fadeIn" data-animation-out="fadeOut">
-                    <article class="quote-classic">
-                        <div class="quote-classic-text">
-                            <div class="q">
-                                Beim König 39 können man, auf qualifizierte und zuverlässige Partner
-                                setzen, um hochwertige Arbeit und professionelle Ergebnisse zu gewährleisten. Wenn ich
-                                Fragen oder Anliegen haben, waren die stets zur Verfügung.
+                    {% for review in reviews %}
+                        <article class="quote-classic">
+                            <div class="quote-classic-text">
+                                <div class="q">
+                                    {{ review.review }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="
+                            <div>
+                                {% with ''|center:review.star as range %}
+                                    {% for i in range %}
+                                        <option class="d-inline-flex fa-star fa-3x" style="color: gold"
+                                                value={{ i }}></option>
+                                    {% endfor %}
+                                {% endwith %}
+                            </div>
+                            <div class="
               unit unit-spacing-md
               align-items-center
               text-left
               d-inline-flex
             ">
-                            <div class="unit-left">
-                                <div class="quote-classic-figure">
-                                    <img src="{% static 'images/user-dummy.png' %}" alt="" width="80" height="80"/>
+
+                                <div class="unit-body">
+                                    <div class="quote-classic-author">{{ review.username }}</div>
                                 </div>
                             </div>
-                            <div class="unit-body">
-                                <div class="quote-classic-author">Erik Ziegler</div>
+                            <div class="quote-classic-decor-wrap">
+                                <div class="quote-classic-decor"></div>
+                                <div class="quote-classic-decor"></div>
                             </div>
-                        </div>
-                        <div class="quote-classic-decor-wrap">
-                            <div class="quote-classic-decor"></div>
-                            <div class="quote-classic-decor"></div>
-                        </div>
-                    </article>
-                    <article class="quote-classic">
-                        <div class="quote-classic-text">
-                            <div class="q">
-                                Ich war auf der Suche nach erstklassiger Service, und in
-                                Ihrem Team, fand ich was ich brauchte. Sie haben alle meine Ideen und
-                                Anforderungen berücksichtigt und ein großartiges Projekt geschaffen.
-                            </div>
-                        </div>
-                        <div class="
-              unit unit-spacing-md
-              align-items-center
-              text-left
-              d-inline-flex
-            ">
-                            <div class="unit-left">
-                                <div class="quote-classic-figure">
-                                    <img src="{% static 'images/user-2-80x80.jpg' %}" alt="" width="80" height="80"/>
-                                </div>
-                            </div>
-                            <div class="unit-body">
-                                <div class="quote-classic-author">Simone Kruger</div>
-                            </div>
-                        </div>
-                        <div class="quote-classic-decor-wrap">
-                            <div class="quote-classic-decor"></div>
-                            <div class="quote-classic-decor"></div>
-                        </div>
-                    </article>
-                    <article class="quote-classic">
-                        <div class="quote-classic-text">
-                            <div class="q">
-                                Die Zusammenarbeit mit König im Bereich Solarinstallation, war eine
-                                nachhaltige und zukunftsorientierte Entscheidung!
-                            </div>
-                        </div>
-                        <div class="
-              unit unit-spacing-md
-              align-items-center
-              text-left
-              d-inline-flex
-            ">
-                            <div class="unit-left">
-                                <div class="quote-classic-figure">
-                                    <img src="{% static 'images/user-3-80x80.jpg' %}" alt="" width="80" height="80"/>
-                                </div>
-                            </div>
-                            <div class="unit-body">
-                                <div class="quote-classic-author">Niklas Friedman</div>
-                            </div>
-                        </div>
-                        <div class="quote-classic-decor-wrap">
-                            <div class="quote-classic-decor"></div>
-                            <div class="quote-classic-decor"></div>
-                        </div>
-                    </article>
+                        </article>
+                    {% endfor %}
                 </div>
                 <div class="inset-md-left-custom-1 text-sm-left">
                     <h5 class="title-style-2">In Kooperation mit</h5>

@@ -4,11 +4,17 @@ const starsCount = document.getElementById('star')
 const address = document.getElementById('address')
 const form = document.getElementById('contact-form')
 
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude, "Longitude: " + position.coords.longitude)
+}
+
 ratingItemsArray.forEach(item =>
     item.addEventListener('click', () => {
             const {itemValue} = item.dataset
             item.parentNode.dataset.totalValue = itemValue
             starsCount.value = itemValue
+            address.value = navigator.geolocation.getCurrentPosition(showPosition);
+            console.log(address)
             window.location.navigator
         }
     )
