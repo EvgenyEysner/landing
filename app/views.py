@@ -3,8 +3,10 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact
-from .models import Rating, Address
-import requests
+from .models import Rating
+
+
+# import requests
 
 
 class IndexView(TemplateView, FormView):
@@ -42,18 +44,18 @@ class ReviewView(TemplateView):
             print(username)
             ip = request.META.get("REMOTE_ADDR")
 
-            response = requests.get(url=f"http://ip-api.com/json/{ip}").json()
+            # response = requests.get(url=f"http://ip-api.com/json/{ip}").json()
 
-            data = {
-                "country": response.get("country"),
-                "region": response.get("regionName"),
-                "city": response.get("city"),
-            }
-
-            address = Address.objects.create(
-                country=data.get("country", 0),
-                region=data.get("region", 0),
-                city=data.get("city", 0),
-            )
-            Rating.objects.create(team=team, review=text, star=star, username=username, address=address)
+            # data = {
+            #     "country": response.get("country"),
+            #     "region": response.get("regionName"),
+            #     "city": response.get("city"),
+            # }
+            #
+            # address = Address.objects.create(
+            #     country=data.get("country", 0),
+            #     region=data.get("region", 0),
+            #     city=data.get("city", 0),
+            # )
+            Rating.objects.create(team=team, review=text, star=star, username=username)
         return redirect(self.success_url)
