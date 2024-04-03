@@ -45,7 +45,7 @@ class Rating(models.Model):
         ],
     )
     username = models.CharField("Name", max_length=128)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
     team = models.CharField("Team", max_length=128)
     review = models.TextField("Nachricht", max_length=500, null=True)
     created = models.DateTimeField(auto_now_add=True)
