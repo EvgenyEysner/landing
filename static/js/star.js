@@ -1,12 +1,7 @@
 const ratingItemsList = document.querySelectorAll('.rating__item')
 const ratingItemsArray = Array.prototype.slice.call(ratingItemsList)
 const starsCount = document.getElementById('star')
-const address = document.getElementById('address')
 const form = document.getElementById('contact-form')
-
-function showPosition(position) {
-    console.log("Latitude: " + position.coords.latitude, "Longitude: " + position.coords.longitude)
-}
 
 ratingItemsArray.forEach(item =>
     item.addEventListener('click', () => {

@@ -26,6 +26,7 @@ django-mysql = "==4.7.1"                    # Django-MySQL extends Django’s bu
 setuptools = "*"
 requests = "==2.31.0"
 django-jazzmin = "==2.6.1"
+django-sslserver = "*"
 
 [requires]
 python_version = "3.8"

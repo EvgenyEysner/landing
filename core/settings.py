@@ -25,7 +25,7 @@ env = environ.Env(
     DJANGO_STATIC_ROOT=(str, "staticfiles"),
     DJANGO_MEDIA_ROOT=(str, "media"),
     DJANGO_SECURE_HSTS_SECONDS=(int, 2592000),
-    DJANGO_SESSION_COOKIE_SECURE=(bool, True),
+    DJANGO_SESSION_COOKIE_SECURE=(bool, False),
     # Emailing
     DJANGO_DEFAULT_FROM_EMAIL=(
         str,
@@ -56,7 +56,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 # Application definition
 INSTALLED_APPS = [
-    # "jazzmin",
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "axes",
     "django_db_logger",
     "django_mysql",  # docs https://django-mysql.readthedocs.io/en/latest/index.html
+    "sslserver",
 ]
 
 MIDDLEWARE = [
@@ -92,7 +93,7 @@ MIDDLEWARE = [
 
 SITE_ID = 1
 
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
 ROOT_URLCONF = "core.urls"
 
 # Security envs
@@ -106,8 +107,9 @@ SECURE_HSTS_PRELOAD = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_SSL_REDIRECT = SESSION_COOKIE_SECURE
+
 # Use X-Forwarded-Proto Header to determine SSL status (useful for API docs)
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Csrf middleware settings
 CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE

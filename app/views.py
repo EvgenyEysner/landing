@@ -1,12 +1,12 @@
+import random
+
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact
-from .models import Rating
-
-
-# import requests
+from .helpers.get_user_geo import get_address
+from .models import Rating, Address
 
 
 class IndexView(TemplateView, FormView):
@@ -14,10 +14,10 @@ class IndexView(TemplateView, FormView):
     form_class = FormContact
     success_url = reverse_lazy("home")
 
-    # ToDo add to index.html
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["reviews"] = Rating.objects.all()
+        reviews = list(Rating.objects.all())
+        context["reviews"] = random.sample(reviews, 2)
         return context
 
     def form_valid(self, form):
@@ -41,21 +41,16 @@ class ReviewView(TemplateView):
             text = request.POST.get("review")
             star = request.POST.get("star")
             username = request.POST.get("username")
-            print(username)
+
             ip = request.META.get("REMOTE_ADDR")
 
-            # response = requests.get(url=f"http://ip-api.com/json/{ip}").json()
-
-            # data = {
-            #     "country": response.get("country"),
-            #     "region": response.get("regionName"),
-            #     "city": response.get("city"),
-            # }
-            #
-            # address = Address.objects.create(
-            #     country=data.get("country", 0),
-            #     region=data.get("region", 0),
-            #     city=data.get("city", 0),
-            # )
-            Rating.objects.create(team=team, review=text, star=star, username=username)
+            data = get_address(ip)
+            address = Address.objects.create(
+                country=data.get("country", 0),
+                region=data.get("region", 0),
+                city=data.get("city", 0),
+            )
+            Rating.objects.create(
+                team=team, review=text, star=star, username=username, address=address
+            )
         return redirect(self.success_url)
