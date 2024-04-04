@@ -17,7 +17,7 @@ class IndexView(TemplateView, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         reviews = list(Rating.objects.all())
-        context["reviews"] = random.sample(reviews, 2)
+        context["reviews"] = random.sample(reviews, 5)
         return context
 
     def form_valid(self, form):
