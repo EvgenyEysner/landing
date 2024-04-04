@@ -240,7 +240,7 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_SSL = True
 
 ADMINS = [
-    ("Evgeny", "eugen.eisner@gmail.com"),
+    # ("Evgeny", "eugen.eisner@gmail.com"),
     ("Elektroservice", "moin@elektroservice-koenig.de"),
 ]
 SERVER_EMAIL = env("SERVER_EMAIL")
