@@ -37,8 +37,9 @@ form.addEventListener('submit', () => {
         success: function (json) {
             // remove the value from the input
             $('#team').val(''),
-                $('#star').val(''),
-                $('#review').val(''),
+            $('#star').val(''),
+            $('#review').val(''),
+            $('#username').val(''),
                 console.log(json); // log the returned json to the console
             console.log("success"); // another sanity check
         },
