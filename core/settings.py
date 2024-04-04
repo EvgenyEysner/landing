@@ -24,8 +24,8 @@ env = environ.Env(
     ),
     DJANGO_STATIC_ROOT=(str, "staticfiles"),
     DJANGO_MEDIA_ROOT=(str, "media"),
-    DJANGO_SECURE_HSTS_SECONDS=(int, 0),
-    DJANGO_SESSION_COOKIE_SECURE=(bool, False),
+    DJANGO_SECURE_HSTS_SECONDS=(int, 2592000),
+    DJANGO_SESSION_COOKIE_SECURE=(bool, True),
     # Emailing
     DJANGO_DEFAULT_FROM_EMAIL=(
         str,
