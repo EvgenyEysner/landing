@@ -435,9 +435,10 @@
                             </div>
                             <div>
                                 {% with ''|center:review.star as range %}
-                                    {% for i in range %}
+                                    {% for star in range %}
                                         <option class="d-inline-flex fa-star fa-3x" style="color: gold"
-                                                value={{ i }}></option>
+                                                value="{{ star }}">
+                                        </option>
                                     {% endfor %}
                                 {% endwith %}
                             </div>
