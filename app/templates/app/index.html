@@ -431,7 +431,7 @@
                     <div class="quote-classic-text">
                         {% if review %}
                         <div class="q">
-                            {{ review.review }}
+                            {{ review.review|truncatewords:15 }}
                         </div>
                         {% else %}
                         {% with ''|center:review.star as range %}
