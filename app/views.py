@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact
-# from .helpers.get_user_geo import get_address
-from .models import Rating
+from .helpers.get_user_geo import get_address
+from .models import Rating, Address
 
 
 class IndexView(TemplateView, FormView):
@@ -44,13 +44,13 @@ class ReviewView(TemplateView):
 
             ip = request.META.get("REMOTE_ADDR")
 
-            # data = get_address(ip)
-            # address = Address.objects.create(
-            #     country=data.get("country", 0),
-            #     region=data.get("region", 0),
-            #     city=data.get("city", 0),
-            # )
+            data = get_address(ip)
+            address = Address.objects.create(
+                country=data.get("country", 0),
+                region=data.get("region", 0),
+                city=data.get("city", 0),
+            )
             Rating.objects.create(
-                team=team, review=text, star=star, username=username
+                team=team, review=text, star=star, username=username, address=address
             )
         return redirect(self.success_url)
