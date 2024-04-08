@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     "axes",
     "django_db_logger",
     "django_mysql",  # docs https://django-mysql.readthedocs.io/en/latest/index.html
-    # "sslserver",
+    "sslserver",
 ]
 
 MIDDLEWARE = [
@@ -129,7 +129,6 @@ CSP_DEFAULT_SRC = (
     "https://fonts.gstatic.com",
     "https://maps.gstatic.com",
     "https://cdn.jsdelivr.net",
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
 )
 
 # Cross-site request forgery

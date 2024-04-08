@@ -13,7 +13,7 @@ def contact_created(instance, created, **kwargs):
         admin_msg = EmailMultiAlternatives(
             subject="Eine neue Anfrage über Homepage",
             from_email=settings.SERVER_EMAIL,
-            to=[settings.ADMINS[2]],
+            to=[settings.ADMINS[0]],
         )
         body = render_to_string(
             "app/admin_mail.html",
