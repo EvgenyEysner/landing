@@ -1,50 +1,50 @@
 {% extends 'base.html' %}
 {% load static custom_tags %}
 {% block content %}
-    <div class="page">
-        <!-- Page Header-->
-        {% include 'snippets/header.html' %}
-        <section class="section novi-background bg-cover section-horace">
-            <div class="section-horace-left bg-gray-800">
-                <div class="section-horace-left-content text-center">
-                    <article class="project-classic project-classic-2">
-                        <div class="project-classic-title">Solar<br/>& Elektro</div>
-                        <h6 class="project-classic-text">
-                            Moderne energie<br/>effiziente Häuser<br/>Die Zukunft stärken.
-                        </h6>
-                        <a class="button button-jerry button-primary-outline" href="#contact">Kontakt<span
-                                class="button-jerry-line"></span><span class="button-jerry-line"></span><span
-                                class="button-jerry-line"></span><span class="button-jerry-line"></span></a>
-                    </article>
+<div class="page">
+    <!-- Page Header-->
+    {% include 'snippets/header.html' %}
+    <section class="section novi-background bg-cover section-horace">
+        <div class="section-horace-left bg-gray-800">
+            <div class="section-horace-left-content text-center">
+                <article class="project-classic project-classic-2">
+                    <div class="project-classic-title">Solar<br/>& Elektro</div>
+                    <h6 class="project-classic-text">
+                        Moderne energie<br/>effiziente Häuser<br/>Die Zukunft stärken.
+                    </h6>
+                    <a class="button button-jerry button-primary-outline" href="#contact">Kontakt<span
+                            class="button-jerry-line"></span><span class="button-jerry-line"></span><span
+                            class="button-jerry-line"></span><span class="button-jerry-line"></span></a>
+                </article>
+            </div>
+            <div class="section-horace-left-panel">
+                <div class="swiper-custom-nav">
+                    <!-- Swiper Navigation-->
+                    <div class="swiper-button-prev mdi mdi-arrow-left" id="swiper-prev"></div>
+                    <div class="swiper-button-next mdi mdi-arrow-right" id="swiper-next"></div>
                 </div>
-                <div class="section-horace-left-panel">
-                    <div class="swiper-custom-nav">
-                        <!-- Swiper Navigation-->
-                        <div class="swiper-button-prev mdi mdi-arrow-left" id="swiper-prev"></div>
-                        <div class="swiper-button-next mdi mdi-arrow-right" id="swiper-next"></div>
+            </div>
+        </div>
+        <!-- Swiper-->
+        <div class="swiper-container swiper-slider swiper-slider-1" data-loop="true" data-autoplay="5000"
+             data-simulate-touch="false" data-custom-prev="#swiper-prev" data-custom-next="#swiper-next"
+             data-slide-effect="fade">
+            <div class="swiper-wrapper text-center">
+                {% get_slider_images as images %}
+                {% for img in images %}
+                <div class="swiper-slide context-dark" data-slide-bg="{{ img.image.url }}">
+                    <div class="swiper-slide-caption project-modern">
+                        <div class="project-modern-decor" data-caption-animate="fadeInRight"
+                             data-caption-delay="0"></div>
                     </div>
                 </div>
+                {% endfor %}
+                <!-- Swiper Pagination-->
+                <!--.swiper-pagination-->
             </div>
-            <!-- Swiper-->
-            <div class="swiper-container swiper-slider swiper-slider-1" data-loop="true" data-autoplay="5000"
-                 data-simulate-touch="false" data-custom-prev="#swiper-prev" data-custom-next="#swiper-next"
-                 data-slide-effect="fade">
-                <div class="swiper-wrapper text-center">
-                    {% get_slider_images as images %}
-                    {% for img in images %}
-                        <div class="swiper-slide context-dark" data-slide-bg="{{ img.image.url }}">
-                            <div class="swiper-slide-caption project-modern">
-                                <div class="project-modern-decor" data-caption-animate="fadeInRight"
-                                     data-caption-delay="0"></div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    <!-- Swiper Pagination-->
-                    <!--.swiper-pagination-->
-                </div>
-            </div>
-        </section>
-        <section class="
+        </div>
+    </section>
+    <section class="
       section
       novi-background
       bg-cover
@@ -52,238 +52,238 @@
       bg-white
       parallax-scene-js
     " id="about">
-            <div class="container">
-                <div class="row row-50 align-items-center justify-content-md-between">
-                    <div class="col-md-4 col-lg-3">
-                        <div class="row row-40 row-md-60">
-                            <div class="col-sm-4 col-md-12 col-xl-11 wow fadeInLeft">
-                                <article class="box-icon-classic">
-                                    <div class="box-icon-classic-header">
-                                        <div class="
+        <div class="container">
+            <div class="row row-50 align-items-center justify-content-md-between">
+                <div class="col-md-4 col-lg-3">
+                    <div class="row row-40 row-md-60">
+                        <div class="col-sm-4 col-md-12 col-xl-11 wow fadeInLeft">
+                            <article class="box-icon-classic">
+                                <div class="box-icon-classic-header">
+                                    <div class="
                       box-icon-classic-icon
                       novi-icon
                       linearicons-apartment
                     "></div>
-                                        <h6 class="box-icon-classic-title">
-                                            <a href="#">Solaranlagen</a>
-                                        </h6>
-                                    </div>
-                                    <div class="box-icon-classic-text">
-                                        Wir bieten hochwertige Solaranlagen.
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="col-sm-4 col-md-12 col-xl-11 wow fadeInLeft" data-wow-delay=".05s">
-                                <article class="box-icon-classic">
-                                    <div class="box-icon-classic-header">
-                                        <div class="box-icon-classic-icon novi-icon linearicons-pen2"></div>
-                                        <h6 class="box-icon-classic-title">
-                                            <a href="#">Elektroinstallation</a>
-                                        </h6>
-                                    </div>
-                                    <div class="box-icon-classic-text">
-                                        Unser Team bietet einzigartige und stilvolle
-                                        Lösungen.
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="col-sm-4 col-md-12 col-xl-11 wow fadeInLeft" data-wow-delay=".1s">
-                                <article class="box-icon-classic">
-                                    <div class="box-icon-classic-header">
-                                        <div class="box-icon-classic-icon novi-icon linearicons-lamp"></div>
-                                        <h6 class="box-icon-classic-title"><a href="#">Licht</a></h6>
-                                    </div>
-                                    <div class="box-icon-classic-text">
-                                        Lassen Sie unser Team eine einzigartige Beleuchtung für Ihr
-                                        Zuhause entwerfen.
-                                    </div>
-                                </article>
-                            </div>
+                                    <h6 class="box-icon-classic-title">
+                                        <a href="#">Solaranlagen</a>
+                                    </h6>
+                                </div>
+                                <div class="box-icon-classic-text">
+                                    Wir bieten hochwertige Solaranlagen.
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-sm-4 col-md-12 col-xl-11 wow fadeInLeft" data-wow-delay=".05s">
+                            <article class="box-icon-classic">
+                                <div class="box-icon-classic-header">
+                                    <div class="box-icon-classic-icon novi-icon linearicons-pen2"></div>
+                                    <h6 class="box-icon-classic-title">
+                                        <a href="#">Elektroinstallation</a>
+                                    </h6>
+                                </div>
+                                <div class="box-icon-classic-text">
+                                    Unser Team bietet einzigartige und stilvolle
+                                    Lösungen.
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-sm-4 col-md-12 col-xl-11 wow fadeInLeft" data-wow-delay=".1s">
+                            <article class="box-icon-classic">
+                                <div class="box-icon-classic-header">
+                                    <div class="box-icon-classic-icon novi-icon linearicons-lamp"></div>
+                                    <h6 class="box-icon-classic-title"><a href="#">Licht</a></h6>
+                                </div>
+                                <div class="box-icon-classic-text">
+                                    Lassen Sie unser Team eine einzigartige Beleuchtung für Ihr
+                                    Zuhause entwerfen.
+                                </div>
+                            </article>
                         </div>
                     </div>
-                    <div class="col-md-7 col-lg-6">
-                        <div class="inset-xl-left-35">
-                            <h3 class="wow fadeInRight">
-                                Finden Sie den Preis <br/>
-                                Ihre Solaranlage
-                            </h3>
-                            <h6 class="title-style-1 wow fadeInRight" data-wow-delay=".05s">
-                                Wir werden Sie innerhalb von 24 Stunden kontaktieren
-                            </h6>
-                            <div class="form-style-1 context-dark wow blurIn">
-                                <!-- RD Mailform-->
-                                {% include 'snippets/form-preis.html' %}
+                </div>
+                <div class="col-md-7 col-lg-6">
+                    <div class="inset-xl-left-35">
+                        <h3 class="wow fadeInRight">
+                            Finden Sie den Preis <br/>
+                            Ihre Solaranlage
+                        </h3>
+                        <h6 class="title-style-1 wow fadeInRight" data-wow-delay=".05s">
+                            Wir werden Sie innerhalb von 24 Stunden kontaktieren
+                        </h6>
+                        <div class="form-style-1 context-dark wow blurIn">
+                            <!-- RD Mailform-->
+                            {% include 'snippets/form-preis.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layer-wrap layer-1">
+            <div class="layer" data-depth="0.4">
+                <img src="{% static 'images/index-7-694x539.png' %}" alt="" width="694" height="539"/>
+            </div>
+        </div>
+    </section>
+    <section class="section novi-background bg-cover section-xl bg-gray-800 decoration-1">
+        <div class="tabs-custom container" id="tabs-1" data-view-triggerable="true">
+            <div class="row row-30 row-md-40 justify-content-lg-between">
+                <div class="col-lg-5">
+                    <h6 class="title-style-1 wow fadeInLeft">4 Schritte zum Eigenheim</h6>
+                    <h1 class="wow fadeInLeft" data-wow-delay=".05s">
+                        Wie wir es<br/>machen<span class="font-weight-light"></span>
+                    </h1>
+                    <!-- Tab panes-->
+                    <div class="tab-content wow fadeInLeft" data-wow-delay=".1s">
+                        <div class="tab-pane fade show active" id="tabs-1-1">
+                            <h3 class="title-style-1">Ziele erreichen und definieren</h3>
+                            <p>
+                                Als erstes treffen wir uns mit unseren Kunden und besprechen
+                                ihre Ziele für ein zukünftiges Projekt. Während dieses Treffens
+                                können Sie gerne Ihre Ideen mitteilen und viele Fragen stellen
+                            </p>
+                            <p>
+                                Diese Phase ist äußerst entscheidend, da Sie die Arbeit Ihres
+                                potenziellen Architekten bewerten können, indem Sie sein
+                                Portfolio durchsuchen. Als Kunde können Sie auch beurteilen, ob
+                                der Architekt auf Ihre Bedürfnisse hört und bestätigt, dass er
+                                sie versteht.
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-1-2">
+                            <h3 class="title-style-1">Elektroinstallationen</h3>
+                            <p>
+                                Die Elektroinstallation ist ein wichtiger Bestandteil eines jeden Gebäudes oder
+                                Hauses.
+                                Es ist wichtig sicherzustellen, dass alle elektrischen Komponenten wie Kabel,
+                                Steckdosen
+                                und Schalter korrekt installiert sind, um Sicherheit und Effizienz zu gewährleisten.
+                            </p>
+                            <p>
+                                Professionelle Elektriker sind ausgebildet, elektrische Systeme zu installieren und
+                                zu
+                                warten
+                                sowie alle auftretenden Probleme zu diagnostizieren. Eine fachgerechte
+                                Elektroinstallation kann
+                                langfristig Energiekosten sparen und gefährliche Unfälle verhindern.
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-1-3">
+                            <h3 class="title-style-1">Solarinstallationen</h3>
+                            <p>
+                                Solaranlagen sind ein wichtiger Bestandteil der grünen Energiewende. Solarenergie
+                                ist
+                                eine saubere
+                                und erneuerbare Energiequelle, die dazu beitragen kann, unsere Abhängigkeit von
+                                fossilen
+                                Brennstoffen zu verringern, Emissionen zu reduzieren und uns eine nachhaltigere
+                                Zukunft
+                                zu ermöglichen.
+                            </p>
+                            <p>
+                                Bei der Solarinstallation werden Sonnenkollektoren auf Dächern oder anderen
+                                geeigneten
+                                Orten aufgestellt,
+                                um die Sonnenenergie einzufangen und in Strom umzuwandeln. Es erfordert eine
+                                sorgfältige
+                                Planung und
+                                Konstruktion, um sicherzustellen, dass das System korrekt installiert wird und über
+                                Jahre hinweg effizient funktioniert.
+                                Bei richtiger Installation kann Solarenergie Haushalte, Unternehmen oder sogar ganze
+                                Gemeinden zuverlässig
+                                und kostengünstig mit Strom versorgen.
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="tabs-1-4">
+                            <h3 class="title-style-1">Projekt abschließen</h3>
+                            <p>
+                                Wenn das Projekt in der Endphase ist, führt unser
+                                Qualitätskontrollteam die Endkontrolle des Gebäudes durch, um
+                                sicherzustellen, dass alles ordnungsgemäß ausgeführt wurde.
+                            </p>
+                            <p>
+                                Unsere Mitarbeiter werden auch in diesem letzten Schritt
+                                sicherstellen, dass alle Innenelemente und Einbauten korrekt
+                                installiert werden. Nachdem alles abgeschlossen ist, laden wir
+                                unseren Kunden ein, das Endergebnis zu bewerten und die
+                                Qualitätsleistung unseres Projekts zu erleben.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-6">
+                    <div class="inset-xl-left-35">
+                        <ul class="nav nav-style-1">
+                            <li class="nav-item wow blurIn" role="presentation">
+                                <a class="nav-link active" href="#tabs-1-1" data-toggle="tab">Das Kennenlernen</a>
+                            </li>
+                            <li class="nav-item wow blurIn" role="presentation" data-wow-delay=".05s">
+                                <a class="nav-link" href="#tabs-1-2" data-toggle="tab">Elektroinstallationen</a>
+                            </li>
+                            <li class="nav-item wow blurIn" role="presentation" data-wow-delay=".1s">
+                                <a class="nav-link" href="#tabs-1-3" data-toggle="tab">Solarinstallationen</a>
+                            </li>
+                            <li class="nav-item wow blurIn" role="presentation" data-wow-delay=".15s">
+                                <a class="nav-link" href="#tabs-1-4" data-toggle="tab">Der letzte Schliff für Ihr
+                                    zukünftiges
+                                    Zuhause</a>
+                            </li>
+                        </ul>
+                        <div class="project-creative wow blurIn">
+                            <div class="project-creative-figure active" data-view-trigger="#tabs-1-1">
+                                <img src="{% static 'images/index-1-531x327.jpg' %}" alt="" width="531"
+                                     height="327"/>
+                            </div>
+                            <div class="project-creative-figure" data-view-trigger="#tabs-1-2">
+                                <img src="{% static 'images/index-2-531x327.jpg' %}" alt="" width="531"
+                                     height="327"/>
+                            </div>
+                            <div class="project-creative-figure" data-view-trigger="#tabs-1-3">
+                                <img src="{% static 'images/index-3-531x327.jpg' %}" alt="" width="531"
+                                     height="327"/>
+                            </div>
+                            <div class="project-creative-figure" data-view-trigger="#tabs-1-4">
+                                <img src="{% static 'images/index-4-531x327.jpg' %}" alt="" width="531"
+                                     height="327"/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="layer-wrap layer-1">
-                <div class="layer" data-depth="0.4">
-                    <img src="{% static 'images/index-7-694x539.png' %}" alt="" width="694" height="539"/>
-                </div>
-            </div>
-        </section>
-        <section class="section novi-background bg-cover section-xl bg-gray-800 decoration-1">
-            <div class="tabs-custom container" id="tabs-1" data-view-triggerable="true">
-                <div class="row row-30 row-md-40 justify-content-lg-between">
-                    <div class="col-lg-5">
-                        <h6 class="title-style-1 wow fadeInLeft">4 Schritte zum Eigenheim</h6>
-                        <h1 class="wow fadeInLeft" data-wow-delay=".05s">
-                            Wie wir es<br/>machen<span class="font-weight-light"></span>
-                        </h1>
-                        <!-- Tab panes-->
-                        <div class="tab-content wow fadeInLeft" data-wow-delay=".1s">
-                            <div class="tab-pane fade show active" id="tabs-1-1">
-                                <h3 class="title-style-1">Ziele erreichen und definieren</h3>
-                                <p>
-                                    Als erstes treffen wir uns mit unseren Kunden und besprechen
-                                    ihre Ziele für ein zukünftiges Projekt. Während dieses Treffens
-                                    können Sie gerne Ihre Ideen mitteilen und viele Fragen stellen
-                                </p>
-                                <p>
-                                    Diese Phase ist äußerst entscheidend, da Sie die Arbeit Ihres
-                                    potenziellen Architekten bewerten können, indem Sie sein
-                                    Portfolio durchsuchen. Als Kunde können Sie auch beurteilen, ob
-                                    der Architekt auf Ihre Bedürfnisse hört und bestätigt, dass er
-                                    sie versteht.
-                                </p>
-                            </div>
-                            <div class="tab-pane fade" id="tabs-1-2">
-                                <h3 class="title-style-1">Elektroinstallationen</h3>
-                                <p>
-                                    Die Elektroinstallation ist ein wichtiger Bestandteil eines jeden Gebäudes oder
-                                    Hauses.
-                                    Es ist wichtig sicherzustellen, dass alle elektrischen Komponenten wie Kabel,
-                                    Steckdosen
-                                    und Schalter korrekt installiert sind, um Sicherheit und Effizienz zu gewährleisten.
-                                </p>
-                                <p>
-                                    Professionelle Elektriker sind ausgebildet, elektrische Systeme zu installieren und
-                                    zu
-                                    warten
-                                    sowie alle auftretenden Probleme zu diagnostizieren. Eine fachgerechte
-                                    Elektroinstallation kann
-                                    langfristig Energiekosten sparen und gefährliche Unfälle verhindern.
-                                </p>
-                            </div>
-                            <div class="tab-pane fade" id="tabs-1-3">
-                                <h3 class="title-style-1">Solarinstallationen</h3>
-                                <p>
-                                    Solaranlagen sind ein wichtiger Bestandteil der grünen Energiewende. Solarenergie
-                                    ist
-                                    eine saubere
-                                    und erneuerbare Energiequelle, die dazu beitragen kann, unsere Abhängigkeit von
-                                    fossilen
-                                    Brennstoffen zu verringern, Emissionen zu reduzieren und uns eine nachhaltigere
-                                    Zukunft
-                                    zu ermöglichen.
-                                </p>
-                                <p>
-                                    Bei der Solarinstallation werden Sonnenkollektoren auf Dächern oder anderen
-                                    geeigneten
-                                    Orten aufgestellt,
-                                    um die Sonnenenergie einzufangen und in Strom umzuwandeln. Es erfordert eine
-                                    sorgfältige
-                                    Planung und
-                                    Konstruktion, um sicherzustellen, dass das System korrekt installiert wird und über
-                                    Jahre hinweg effizient funktioniert.
-                                    Bei richtiger Installation kann Solarenergie Haushalte, Unternehmen oder sogar ganze
-                                    Gemeinden zuverlässig
-                                    und kostengünstig mit Strom versorgen.
-                                </p>
-                            </div>
-                            <div class="tab-pane fade" id="tabs-1-4">
-                                <h3 class="title-style-1">Projekt abschließen</h3>
-                                <p>
-                                    Wenn das Projekt in der Endphase ist, führt unser
-                                    Qualitätskontrollteam die Endkontrolle des Gebäudes durch, um
-                                    sicherzustellen, dass alles ordnungsgemäß ausgeführt wurde.
-                                </p>
-                                <p>
-                                    Unsere Mitarbeiter werden auch in diesem letzten Schritt
-                                    sicherstellen, dass alle Innenelemente und Einbauten korrekt
-                                    installiert werden. Nachdem alles abgeschlossen ist, laden wir
-                                    unseren Kunden ein, das Endergebnis zu bewerten und die
-                                    Qualitätsleistung unseres Projekts zu erleben.
-                                </p>
-                            </div>
+        </div>
+    </section>
+    <section class="section novi-background bg-cover section-lg bg-gray-100 text-center" id="team">
+        <div class="container">
+            <h3 class="wow fadeInLeft">Unser Team</h3>
+            <h6 class="title-style-1 wow fadeInRight">
+                Menschen hinter unserem Erfolg
+            </h6>
+            <!-- Owl Carousel-->
+            <div class="owl-carousel" data-items="1" data-sm-items="2" data-md-items="3" data-xl-items="4"
+                 data-margin="5"
+                 data-dots="true" data-mouse-drag="false">
+                {% get_team as team_members %}
+                {% for member in team_members %}
+                <article class="team-classic wow fadeInUp" data-wow-delay=".1s">
+                    <div class="team-classic-figure">
+                        <img src="{{ member.avatar.url }}" alt="" width="290" height="284"/>
+                    </div>
+                    <div class="team-classic-body">
+                        <h5 class="team-classic-name"><a
+                                href="#">{{ member.first_name }} {{ member.last_name }}</a></h5>
+                    </div>
+                    <div class="team-classic-footer">
+                        <div class="team-classic-status">{{ member.job }}</div>
+                        <div class="team-classic-list-panel">
+                            <div class="heading-1 team-classic-placeholder">{{ member.first_name }}</div>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-xl-6">
-                        <div class="inset-xl-left-35">
-                            <ul class="nav nav-style-1">
-                                <li class="nav-item wow blurIn" role="presentation">
-                                    <a class="nav-link active" href="#tabs-1-1" data-toggle="tab">Das Kennenlernen</a>
-                                </li>
-                                <li class="nav-item wow blurIn" role="presentation" data-wow-delay=".05s">
-                                    <a class="nav-link" href="#tabs-1-2" data-toggle="tab">Elektroinstallationen</a>
-                                </li>
-                                <li class="nav-item wow blurIn" role="presentation" data-wow-delay=".1s">
-                                    <a class="nav-link" href="#tabs-1-3" data-toggle="tab">Solarinstallationen</a>
-                                </li>
-                                <li class="nav-item wow blurIn" role="presentation" data-wow-delay=".15s">
-                                    <a class="nav-link" href="#tabs-1-4" data-toggle="tab">Der letzte Schliff für Ihr
-                                        zukünftiges
-                                        Zuhause</a>
-                                </li>
-                            </ul>
-                            <div class="project-creative wow blurIn">
-                                <div class="project-creative-figure active" data-view-trigger="#tabs-1-1">
-                                    <img src="{% static 'images/index-1-531x327.jpg' %}" alt="" width="531"
-                                         height="327"/>
-                                </div>
-                                <div class="project-creative-figure" data-view-trigger="#tabs-1-2">
-                                    <img src="{% static 'images/index-2-531x327.jpg' %}" alt="" width="531"
-                                         height="327"/>
-                                </div>
-                                <div class="project-creative-figure" data-view-trigger="#tabs-1-3">
-                                    <img src="{% static 'images/index-3-531x327.jpg' %}" alt="" width="531"
-                                         height="327"/>
-                                </div>
-                                <div class="project-creative-figure" data-view-trigger="#tabs-1-4">
-                                    <img src="{% static 'images/index-4-531x327.jpg' %}" alt="" width="531"
-                                         height="327"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </article>
+                {% endfor %}
             </div>
-        </section>
-        <section class="section novi-background bg-cover section-lg bg-gray-100 text-center" id="team">
-            <div class="container">
-                <h3 class="wow fadeInLeft">Unser Team</h3>
-                <h6 class="title-style-1 wow fadeInRight">
-                    Menschen hinter unserem Erfolg
-                </h6>
-                <!-- Owl Carousel-->
-                <div class="owl-carousel" data-items="1" data-sm-items="2" data-md-items="3" data-xl-items="4"
-                     data-margin="5"
-                     data-dots="true" data-mouse-drag="false">
-                    {% get_team as team_members %}
-                    {% for member in team_members %}
-                        <article class="team-classic wow fadeInUp" data-wow-delay=".1s">
-                            <div class="team-classic-figure">
-                                <img src="{{ member.avatar.url }}" alt="" width="290" height="284"/>
-                            </div>
-                            <div class="team-classic-body">
-                                <h5 class="team-classic-name"><a
-                                        href="#">{{ member.first_name }} {{ member.last_name }}</a></h5>
-                            </div>
-                            <div class="team-classic-footer">
-                                <div class="team-classic-status">{{ member.job }}</div>
-                                <div class="team-classic-list-panel">
-                                    <div class="heading-1 team-classic-placeholder">{{ member.first_name }}</div>
-                                </div>
-                            </div>
-                        </article>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="
+    <section class="
       section
       novi-background
       bg-cover
@@ -291,275 +291,285 @@
       bg-white
       parallax-scene-js
     ">
-            <div class="container">
-                <div class="row row-50 justify-content-md-between">
-                    <div class="col-md-6">
-                        <h3 class="wow fadeInRight">Preisgekröntes<br/>Unternehmen</h3>
-                        <h6 class="title-style-1 wow fadeInRight" data-wow-delay=".05s">
-                            Wir liefern die besten Lösungen
-                        </h6>
-                        <article class="video-classic wow blurIn">
-                            <div class="video-classic-figure">
-                                <img src="{% static 'images/index-5-533x362.jpg' %}" alt="" width="533" height="362"/>
-                            </div>
-                            <a class="video-classic-link" data-lightgallery="item"
-                               href="https://www.youtube.com/watch?v=1UWpbtUupQQ"><span
-                                    class="icon mdi mdi-play"></span></a>
-                        </article>
-                    </div>
-                    <div class="col-md-4 col-xl-3 inset-xl-top-70">
-                        <div class="
+        <div class="container">
+            <div class="row row-50 justify-content-md-between">
+                <div class="col-md-6">
+                    <h3 class="wow fadeInRight">Preisgekröntes<br/>Unternehmen</h3>
+                    <h6 class="title-style-1 wow fadeInRight" data-wow-delay=".05s">
+                        Wir liefern die besten Lösungen
+                    </h6>
+                    <article class="video-classic wow blurIn">
+                        <div class="video-classic-figure">
+                            <img src="{% static 'images/index-5-533x362.jpg' %}" alt="" width="533" height="362"/>
+                        </div>
+                        <a class="video-classic-link" data-lightgallery="item"
+                           href="https://www.youtube.com/watch?v=1UWpbtUupQQ"><span
+                                class="icon mdi mdi-play"></span></a>
+                    </article>
+                </div>
+                <div class="col-md-4 col-xl-3 inset-xl-top-70">
+                    <div class="
               row row-30 row-md-50
               justify-content-center justify-content-md-start
             ">
-                            <!---- ToDO Jahr automatisch berechnen -->
-                            <div class="col-6 col-sm-4 col-md-12 col-lg-11 wow fadeInRight">
-                                <article class="counter-classic">
-                                    <div class="counter-classic-header">
-                                        <div class="heading-1 counter-classic-number">
-                                            <span class="counter">7</span>
-                                        </div>
-                                        <h6 class="counter-classic-title">Jahre</h6>
+                        <!---- ToDO Jahr automatisch berechnen -->
+                        <div class="col-6 col-sm-4 col-md-12 col-lg-11 wow fadeInRight">
+                            <article class="counter-classic">
+                                <div class="counter-classic-header">
+                                    <div class="heading-1 counter-classic-number">
+                                        <span class="counter">7</span>
                                     </div>
-                                    <div class="counter-classic-text">
-                                        Wir sind seit 2017 in der Branche tätig.
+                                    <h6 class="counter-classic-title">Jahre</h6>
+                                </div>
+                                <div class="counter-classic-text">
+                                    Wir sind seit 2017 in der Branche tätig.
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-12 col-lg-11 wow fadeInRight" data-wow-delay=".05s">
+                            <article class="counter-classic">
+                                <div class="counter-classic-header">
+                                    <div class="heading-1 counter-classic-number">
+                                        <span class="counter">1650</span>
                                     </div>
-                                </article>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-12 col-lg-11 wow fadeInRight" data-wow-delay=".05s">
-                                <article class="counter-classic">
-                                    <div class="counter-classic-header">
-                                        <div class="heading-1 counter-classic-number">
-                                            <span class="counter">1650</span>
-                                        </div>
-                                        <h6 class="counter-classic-title">Projekten</h6>
-                                    </div>
-                                    <div class="counter-classic-text">
-                                        Bis heute haben wir über 1650 Projekte fertiggestellt
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="col-xl-12 wow fadeInUp">
-                                <a class="button button-jerry button-primary" href="#price">Kontakt<span
-                                        class="button-jerry-line"></span><span class="button-jerry-line"></span><span
-                                        class="button-jerry-line"></span><span class="button-jerry-line"></span></a>
-                            </div>
+                                    <h6 class="counter-classic-title">Projekten</h6>
+                                </div>
+                                <div class="counter-classic-text">
+                                    Bis heute haben wir über 1650 Projekte fertiggestellt
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-xl-12 wow fadeInUp">
+                            <a class="button button-jerry button-primary" href="#price">Kontakt<span
+                                    class="button-jerry-line"></span><span class="button-jerry-line"></span><span
+                                    class="button-jerry-line"></span><span class="button-jerry-line"></span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="layer-wrap layer-2">
-                <div class="layer" data-depth="0.4">
-                    <img src="{% static 'images/index-8-853x574.png' %}" alt="" width="853" height="574"/>
-                </div>
+        </div>
+        <div class="layer-wrap layer-2">
+            <div class="layer" data-depth="0.4">
+                <img src="{% static 'images/index-8-853x574.png' %}" alt="" width="853" height="574"/>
             </div>
-        </section>
-        <section class="
+        </div>
+    </section>
+    <section class="
       section
       novi-background
       bg-cover
       section-lg section-inset-2
       bg-gray-100
     " id="portfolio">
-            <div class="container">
-                <div class="caption-classic">
-                    <div class="caption-classic-group">
-                        <h1 class="caption-classic-title wow fadeInLeft">
-                            Pro<span class="font-weight-light">jekte</span>
-                        </h1>
-                        <p class="caption-classic-text wow fadeInRight">
-                            Nachfolgend können Sie sich unsere vorgestellten und aktuellen
-                            Projekte ansehen.
-                        </p>
-                    </div>
-                    <div class="caption-classic-decor wow blurIn"></div>
+        <div class="container">
+            <div class="caption-classic">
+                <div class="caption-classic-group">
+                    <h1 class="caption-classic-title wow fadeInLeft">
+                        Pro<span class="font-weight-light">jekte</span>
+                    </h1>
+                    <p class="caption-classic-text wow fadeInRight">
+                        Nachfolgend können Sie sich unsere vorgestellten und aktuellen
+                        Projekte ansehen.
+                    </p>
                 </div>
-
-                <!-- Owl Carousel-->
-                <div class="owl-carousel owl-style-1" data-autoplay="false" data-items="1" data-margin="30"
-                     data-xl-margin="90"
-                     data-nav="true" data-dots="true" data-mouse-drag="false" data-smart-speed="600">
-                    {% get_carousel_images as images %}
-                    {% for item in images %}
-                        <article class="project-mary">
-                            <div class="project-mary-figure">
-                                <img src="{{ item.image.url }}" alt="" width="775" height="524"/>
-                                <div class="project-mary-link-wrap">
-                                    <a class="project-mary-link mdi mdi-magnify" data-lightgallery="item"
-                                       href="{{ item.big_image.url }}">
-                                        <img src="{% static 'images/project-1-775x524.jpg' %}" alt="" width="775"
-                                             height="524"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <!--                    <div class="project-mary-content">-->
-                            <!--                        <ul class="project-mary-panel">-->
-                            <!--                            <li class="project-mary-panel-item">-->
-                            <!--                                <time class="project-mary-time" datetime="2019-03-15">{{item.status}}</time>-->
-                            <!--                            </li>-->
-                            <!--                            <li class="project-mary-panel-item">-->
-                            <!--                                <div class="project-mary-tag">{{item.name}}</div>-->
-                            <!--                            </li>-->
-                            <!--                        </ul>-->
-                            <!--                        <h3 class="project-mary-title">-->
-                            <!--                            {{item.location}}-->
-                            <!--                        </h3>-->
-                            <!--                        <p class="project-mary-text">-->
-                            <!--                            {{item.description}}-->
-                            <!--                        </p>-->
-                            <!--                    </div>-->
-                        </article>
-                    {% endfor %}
-                </div>
+                <div class="caption-classic-decor wow blurIn"></div>
             </div>
-        </section>
-        {% include 'snippets/blog.html' %}
-        <section class="
+
+            <!-- Owl Carousel-->
+            <div class="owl-carousel owl-style-1" data-autoplay="false" data-items="1" data-margin="30"
+                 data-xl-margin="90"
+                 data-nav="true" data-dots="true" data-mouse-drag="false" data-smart-speed="600">
+                {% get_carousel_images as images %}
+                {% for item in images %}
+                <article class="project-mary">
+                    <div class="project-mary-figure">
+                        <img src="{{ item.image.url }}" alt="" width="775" height="524"/>
+                        <div class="project-mary-link-wrap">
+                            <a class="project-mary-link mdi mdi-magnify" data-lightgallery="item"
+                               href="{{ item.big_image.url }}">
+                                <img src="{% static 'images/project-1-775x524.jpg' %}" alt="" width="775"
+                                     height="524"/>
+                            </a>
+                        </div>
+                    </div>
+                    <!--                    <div class="project-mary-content">-->
+                    <!--                        <ul class="project-mary-panel">-->
+                    <!--                            <li class="project-mary-panel-item">-->
+                    <!--                                <time class="project-mary-time" datetime="2019-03-15">{{item.status}}</time>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="project-mary-panel-item">-->
+                    <!--                                <div class="project-mary-tag">{{item.name}}</div>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                        <h3 class="project-mary-title">-->
+                    <!--                            {{item.location}}-->
+                    <!--                        </h3>-->
+                    <!--                        <p class="project-mary-text">-->
+                    <!--                            {{item.description}}-->
+                    <!--                        </p>-->
+                    <!--                    </div>-->
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% include 'snippets/blog.html' %}
+    <section class="
       section
       novi-background
       bg-cover
       section-xl section-inset-2
       bg-gray-800 bg-image
   " style="background-image: url({% static 'images/bg-image-1.jpg' %})">
-            <div class="container">
-                <!-- Owl Carousel-->
-                <div class="owl-carousel owl-style-2" data-loop="true" data-autoplay="true" data-items="1"
-                     data-margin="30"
-                     data-dots="true" data-mouse-drag="false" data-animation-in="fadeIn" data-animation-out="fadeOut">
-                    {% for review in reviews %}
-                        <article class="quote-classic">
-                            <div class="quote-classic-text">
-                                <div class="q">
-                                    {{ review.review }}
-                                </div>
-                            </div>
-                            <div>
-                                {% with ''|center:review.star as range %}
-                                    {% for star in range %}
-                                        <option class="d-inline-flex fa-star fa-3x" style="color: gold"
-                                                value="{{ star }}">
-                                        </option>
-                                    {% endfor %}
-                                {% endwith %}
-                            </div>
-                            <div class="
+        <div class="container">
+            <!-- Owl Carousel-->
+            <div class="owl-carousel owl-style-2" data-loop="true" data-autoplay="true" data-items="1"
+                 data-margin="30"
+                 data-dots="true" data-mouse-drag="false" data-animation-in="fadeIn" data-animation-out="fadeOut">
+                {% for review in reviews %}
+                <article class="quote-classic">
+                    <div class="quote-classic-text">
+                        {% if review %}
+                        <div class="q">
+                            {{ review.review }}
+                        </div>
+                        {% else %}
+                        {% with ''|center:review.star as range %}
+                        {% for star in range %}
+                        <option class="d-inline-flex fa-star fa-3x" style="color: gold"
+                                value="{{ star }}">
+                        </option>
+                        {% endfor %}
+                        {% endwith %}
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% with ''|center:review.star as range %}
+                        {% for star in range %}
+                        <option class="d-inline-flex fa-star fa-3x" style="color: gold"
+                                value="{{ star }}">
+                        </option>
+                        {% endfor %}
+                        {% endwith %}
+                    </div>
+                    <div class="
               unit unit-spacing-md
               align-items-center
               text-left
               d-inline-flex
             ">
 
-                                <div class="unit-body">
-                                    <div class="quote-classic-author">{{ review.username }}</div>
-                                </div>
-                            </div>
-                            <div class="quote-classic-decor-wrap">
-                                <div class="quote-classic-decor"></div>
-                                <div class="quote-classic-decor"></div>
-                            </div>
-                        </article>
-                    {% endfor %}
-                </div>
-                <div class="inset-md-left-custom-1 text-sm-left">
-                    <h5 class="title-style-2">In Kooperation mit</h5>
-                    <div class="clients-classic-wrap wow fadeInUp">
-                        <a class="clients-classic" href="https://www.hepa-solar.com/" target="_blank">
-                            <img src="{% static 'images/hepa-solar-logo.png' %}" alt="" width="87" height="54"/>
-                        </a>
-                        <a class="clients-classic" href="https://www.zarg-energie.de/" target="_blank">
-                            <img src="{% static 'images/zarg.png' %}" alt="" width="112" height="45"/>
-                        </a>
-                        <a class="clients-classic" href="#">
-                            <img src="{% static 'images/clients-3-146x28.png' %}" alt="" width="146" height="28"/>
-                        </a>
-                        <a class="clients-classic" href="#">
-                            <img src="{% static 'images/clients-4-84x47.png' %}" alt="" width="84" height="47"/>
-                        </a>
-                        <a class="clients-classic" href="#">
-                            <img src="{% static 'images/clients-5-131x29.png' %}" alt="" width="131" height="29"/>
-                        </a>
+                        <div class="unit-body">
+                            <div class="quote-classic-author">{{ review.username }}</div>
+                        </div>
                     </div>
+                    <div class="quote-classic-decor-wrap">
+                        <div class="quote-classic-decor"></div>
+                        <div class="quote-classic-decor"></div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            <div class="inset-md-left-custom-1 text-sm-left">
+                <h5 class="title-style-2">In Kooperation mit</h5>
+                <div class="clients-classic-wrap wow fadeInUp">
+                    <a class="clients-classic" href="https://www.hepa-solar.com/" target="_blank">
+                        <img src="{% static 'images/hepa-solar-logo.png' %}" alt="" width="87" height="54"/>
+                    </a>
+                    <a class="clients-classic" href="https://www.zarg-energie.de/" target="_blank">
+                        <img src="{% static 'images/zarg.png' %}" alt="" width="112" height="45"/>
+                    </a>
+                    <a class="clients-classic" href="#">
+                        <img src="{% static 'images/clients-3-146x28.png' %}" alt="" width="146" height="28"/>
+                    </a>
+                    <a class="clients-classic" href="#">
+                        <img src="{% static 'images/clients-4-84x47.png' %}" alt="" width="84" height="47"/>
+                    </a>
+                    <a class="clients-classic" href="#">
+                        <img src="{% static 'images/clients-5-131x29.png' %}" alt="" width="131" height="29"/>
+                    </a>
                 </div>
             </div>
-        </section>
-        <section class="
+        </div>
+    </section>
+    <section class="
       section
       novi-background
       bg-cover bg-white
       section-inset-1
       parallax-scene-js
     " id="contacts">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 d-none d-lg-block wow fadeInLeft">
-                        <img src="{% static 'images/index-6-538x694.png' %}" alt="" width="538" height="694"/>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                        <div class="inset-xl-left-35 section-sm">
-                            <h3 class="wow fadeInRight">Kontaktieren Sie<br/>unser Team</h3>
-                            <h6 class="title-style-1 wow fadeInRight" data-wow-delay=".05s">
-                                Lass uns zusammen arbeiten!
-                            </h6>
-                            <div class="form-style-1 context-dark wow blurIn">
-                                <!-- RD Mailform-->
-                                {% include 'snippets/form-kontakt.html' %}
-                            </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 d-none d-lg-block wow fadeInLeft">
+                    <img src="{% static 'images/index-6-538x694.png' %}" alt="" width="538" height="694"/>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                    <div class="inset-xl-left-35 section-sm">
+                        <h3 class="wow fadeInRight">Kontaktieren Sie<br/>unser Team</h3>
+                        <h6 class="title-style-1 wow fadeInRight" data-wow-delay=".05s">
+                            Lass uns zusammen arbeiten!
+                        </h6>
+                        <div class="form-style-1 context-dark wow blurIn">
+                            <!-- RD Mailform-->
+                            {% include 'snippets/form-kontakt.html' %}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="layer-wrap layer-3">
-                <div class="layer" data-depth="0.4">
-                    <img src="{% static 'images/index-9-1047x531.png' %}" alt="" width="1047" height="531"/>
-                </div>
+        </div>
+        <div class="layer-wrap layer-3">
+            <div class="layer" data-depth="0.4">
+                <img src="{% static 'images/index-9-1047x531.png' %}" alt="" width="1047" height="531"/>
             </div>
-        </section>
-        {% include 'snippets/privacy.html' %}
-        {% include 'snippets/imprint.html' %}
-        <!-- Footer -->
-        {% include 'snippets/footer.html' %}
-        {% include 'snippets/cookie.html' %}
-    </div>
-    <!-- <div class="snackbars" id="form-output-global"></div> -->
+        </div>
+    </section>
+    {% include 'snippets/privacy.html' %}
+    {% include 'snippets/imprint.html' %}
+    <!-- Footer -->
+    {% include 'snippets/footer.html' %}
+    {% include 'snippets/cookie.html' %}
+</div>
+<!-- <div class="snackbars" id="form-output-global"></div> -->
+<script src="{% static 'js/core.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/core.min.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
 {% endblock content %}
 {% block javascript %}
-    <script>
-        $(document).ready(function () {
-            // Privacy Modal
-            $("#privacy-modal").click(function () {
-                $("#modal").modal();
-            });
-            // Imprint Modal
-            $("#imprint-modal").click(function () {
-                $("#imprintModal").modal();
-            });
-            if ($.cookie('is_cookie_compliance_accepted')) {
-                // We don't need show popup, when cookies are set
-                return
-            } else {
-                // Open Cookie Modal
-                $('#cookieModal').modal('show');
-            }
+<script>
+    $(document).ready(function () {
+        // Privacy Modal
+        $("#privacy-modal").click(function () {
+            $("#modal").modal();
+        });
+        // Imprint Modal
+        $("#imprint-modal").click(function () {
+            $("#imprintModal").modal();
+        });
+        if ($.cookie('is_cookie_compliance_accepted')) {
+            // We don't need show popup, when cookies are set
+            return
+        } else {
+            // Open Cookie Modal
+            $('#cookieModal').modal('show');
+        }
 
-            // Set Cookies
-            function setCookie(cname, cvalue, exdays) {
-                var d = new Date();
-                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-                var expires = "expires=" + d.toUTCString();
-                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-            }
+        // Set Cookies
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
 
-            $(function () {
-                $('body').on('click', '.btn-close-cookie-notification', function () {
-                    setCookie('is_cookie_compliance_accepted', true, 3000);
-                    $('#cookieModal').modal('hide');
-                    $(this).parent().fadeOut(250);
-                });
+        $(function () {
+            $('body').on('click', '.btn-close-cookie-notification', function () {
+                setCookie('is_cookie_compliance_accepted', true, 3000);
+                $('#cookieModal').modal('hide');
+                $(this).parent().fadeOut(250);
             });
         });
-    </script>
+    });
+</script>
 {% endblock javascript %}
