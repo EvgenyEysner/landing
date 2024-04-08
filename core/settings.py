@@ -56,7 +56,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 # Application definition
 INSTALLED_APPS = [
-    "jazzmin",
+    # "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
