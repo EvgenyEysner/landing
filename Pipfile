@@ -27,6 +27,7 @@ setuptools = "*"
 django-jazzmin = "==2.6.1"
 requests = "==2.31.0"
 django-sslserver = "*"
+psycopg2-binary = "==2.9.9"
 
 [requires]
 python_version = "3.8"
