@@ -1,0 +1,21 @@
+{% load static %}
+<section class="
+      novi-background
+      bg-cover
+      section-xl
+      bg-white
+      text-start
+      table-responsive
+    ">
+    <div class="container">
+        <div class="d-flex flex-column align-items-center mb-3">
+            <img src="{% static 'images/logo_1.svg' %}" height="500" width="500">
+            <h3 class="wow fadeInRight" style="margin-top: 20px;">
+                Unser Angebot
+            </h3>
+        </div>
+        <object data="{% static 'docs/koenig_flyer.pdf' %}" type="application/pdf" width="100%" height="700px">
+            <p>Unable to display PDF file. <a href="{% static 'docs/koenig_flyer.pdf' %}">Download</a> instead.</p>
+        </object>
+    </div>
+</section>
