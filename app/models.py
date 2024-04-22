@@ -84,8 +84,6 @@ class Team(models.Model):
     avatar = models.ImageField(
         "foto", upload_to="images/team", help_text="maximale Bildgröße 290x284"
     )
-    first_name = models.CharField("vorname", max_length=200)
-    last_name = models.CharField("nachname", max_length=200)
     job = models.CharField("beruf", max_length=64)
 
     class Meta:

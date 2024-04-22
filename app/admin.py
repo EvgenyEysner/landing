@@ -47,7 +47,7 @@ class TeamAdmin(admin.ModelAdmin):
         )
 
     image_tag.short_description = "avatar"
-    list_display = ["image_tag", "first_name", "last_name", "job"]
+    list_display = ["image_tag", "job"]
 
 
 @admin.register(Social)

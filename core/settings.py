@@ -70,7 +70,6 @@ INSTALLED_APPS = [
     "axes",
     "django_db_logger",
     "django_mysql",  # docs https://django-mysql.readthedocs.io/en/latest/index.html
-    # "sslserver",
 ]
 
 MIDDLEWARE = [
