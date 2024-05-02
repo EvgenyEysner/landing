@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static custom_tags %}
+{% load cache %}
 {% block content %}
 {% cache 600 index %}
 <div class="page">
@@ -532,7 +533,7 @@
 <script src="{% static 'js/core.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
-{% cache 600 index %}
+{{% endcache %}
 {% endblock content %}
 {% block javascript %}
 <script>
