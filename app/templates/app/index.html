@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static custom_tags %}
 {% block content %}
+{% cache 600 index %}
 <div class="page">
     <!-- Page Header-->
     {% include 'snippets/header.html' %}
@@ -531,7 +532,7 @@
 <script src="{% static 'js/core.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
-
+{% cache 600 index %}
 {% endblock content %}
 {% block javascript %}
 <script>
