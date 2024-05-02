@@ -25,7 +25,7 @@ env = environ.Env(
     DJANGO_STATIC_ROOT=(str, "staticfiles"),
     DJANGO_MEDIA_ROOT=(str, "media"),
     DJANGO_SECURE_HSTS_SECONDS=(int, 2592000),
-    DJANGO_SESSION_COOKIE_SECURE=(bool, True),
+    DJANGO_SESSION_COOKIE_SECURE=(bool, False),
     # Emailing
     DJANGO_DEFAULT_FROM_EMAIL=(
         str,
@@ -246,7 +246,7 @@ ADMINS = [
     # ("Evgeny", "eugen.eisner@gmail.com"),
     ("Elektroservice", "moin@elektroservice-koenig.de"),
 ]
-SERVER_EMAIL = env("SERVER_EMAIL")
+
 # Logging
 DB_LOGGER_ENTRY_LIFETIME = 30
 LOGGING = {
