@@ -1,20 +1,33 @@
-{#% load cache %#}
-{#% cache 30 header %#}
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="de">
 {% load static %}
+{% load cache %}
+{% cache 30 header %}
 <head>
-    <title>{% block title %}Elektroservice König{% endblock %}</title>
+    <title>{% block title %}Elektroservice König - Zuverlässiger Experte für Ihre Solaranlage{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description"
+          content="Professionelle Elektroinstallationen vom Experten. Elektroservice König bietet Ihnen hochwertige
+          Lösungen für Ihr Zuhause oder Geschäft - von der Planung bis zur Umsetzung.
+          Vertrauen Sie auf unsere jahrelange Erfahrung und erstklassigen Service.">
+    <meta name="keywords"
+          content="solarenergie, photovoltaik anlage, solarpanel, erneuerbare energien, solardach, solarstrom, photovoltaik system,
+          solarthermie, solarstrom erzeugen, solarmodule, solarpark, photovoltaikanlage, solarbatterie, solarstrom speichern, solarstrom haus,
+          solarstrom anlage, solarstromanlage, solarstrom komplett, photovoltaikanlage kosten, solartechnik, solarenergieanlagen, solardach preis,
+          solarzelle, solarheizung, solarstrom miete, solarprojekt, solarstrom verbrauch,
+          solarstrom erzeugung, solarstrom einspeisen, solarstrom für zuhause, solarstrom anlage kosten, solarstrom kaufen">
+
     <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
-</head>
 
+</head>
+{% endcache %}
 <body>
 <div class="preloader">
     <div class="cssload-box-loading"></div>

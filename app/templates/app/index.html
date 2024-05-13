@@ -311,7 +311,6 @@
               row row-30 row-md-50
               justify-content-center justify-content-md-start
             ">
-                        <!---- ToDO Jahr automatisch berechnen -->
                         <div class="col-6 col-sm-4 col-md-12 col-lg-11 wow fadeInRight">
                             <article class="counter-classic">
                                 <div class="counter-classic-header">
@@ -424,13 +423,13 @@
             <!-- Owl Carousel-->
             <div class="owl-carousel owl-style-2" data-loop="true" data-autoplay="true" data-items="1"
                  data-margin="30"
-                 data-dots="true" data-mouse-drag="false" data-animation-in="fadeIn" data-animation-out="fadeOut">
+                 data-dots="false" data-mouse-drag="false" data-animation-in="fadeIn" data-animation-out="fadeOut">
                 {% for review in reviews %}
                 <article class="quote-classic">
                     <div class="quote-classic-text">
                         {% if review %}
                         <div class="q">
-                            {{ review.review|truncatewords:15 }}
+                            {{ review.review|truncatewords:25 }}
                         </div>
                         {% else %}
                         {% with ''|center:review.star as range %}
@@ -533,7 +532,7 @@
 <script src="{% static 'js/core.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
-{{% endcache %}
+{% endcache %}
 {% endblock content %}
 {% block javascript %}
 <script>
