@@ -20,6 +20,8 @@ env = environ.Env(
             "0.0.0.0",
             "elektroservice-koenig.de",
             "www.elektroservice-koenig.de",
+            "www.koenig39.de",
+            "koenig39.de",
         ],
     ),
     DJANGO_STATIC_ROOT=(str, "staticfiles"),
@@ -208,9 +210,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.path.join(BASE_DIR, 'cache_files'),  # Указываем, куда будем сохранять
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(
+            BASE_DIR, "cache_files"
+        ),  # Указываем, куда будем сохранять
         # кэшируемые файлы! Не забываем создать папку cache_files внутри папки с manage.py!
     }
 }
