@@ -31,6 +31,18 @@ class Address(models.Model):
     country = models.CharField("Land", max_length=128, null=True)
 
 
+class InstallationTeam(models.Model):
+    team_number = models.PositiveIntegerField(default=1, verbose_name="Team")
+
+    class Meta:
+        verbose_name = "Team"
+        verbose_name_plural = "Teams"
+        ordering = ["team_number"]
+
+    def __str__(self):
+        return f"Team {self.team_number}"
+
+
 class Rating(models.Model):
     """
     Create rating model
@@ -45,8 +57,16 @@ class Rating(models.Model):
         ],
     )
     username = models.CharField("Name", max_length=128)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
-    team = models.CharField("Team", max_length=128)
+    address = models.ForeignKey(
+        Address, on_delete=models.CASCADE, null=True, blank=True
+    )
+    # team = models.CharField("Team", max_length=128)
+    team = models.ForeignKey(
+        InstallationTeam,
+        on_delete=models.CASCADE,
+        verbose_name="Team",
+        related_name="teams",
+    )
     review = models.TextField("Nachricht", max_length=500, null=True)
     created = models.DateTimeField(auto_now_add=True)
 

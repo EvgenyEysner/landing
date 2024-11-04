@@ -19,16 +19,23 @@
                 <h5 class="card-header text-center bg-transparent">Bewertung abgeben</h5>
                 <div class="card-body p-4">
                     <form class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact"
-                          method="post" action="{% url 'review' %}" id="contact-form">
+                          method="post" action="{% url 'review' team.id %}" id="contact-form">
                         {% csrf_token %}
                         <div class="form-wrap">
                             <input class="form-input" id="username" type="text" name="username"
                                    data-constraints="@Required"
-                                   placeholder="Name, Vorname"/>
+                                   placeholder="Name, Vorname"
+                                   required
+                            />
                         </div>
                         <div class="form-wrap">
-                            <input class="form-input" id="team" type="text" name="team" data-constraints="@Required"
-                                   placeholder="Team"/>
+                            <input class="form-input"
+                                   id="team"
+                                   type="text"
+                                   name="team"
+                                   disabled
+                                   placeholder="Team {{team.team_number}}"
+                            />
                         </div>
                         <div class="form-wrap text-center">
                             <div class="rating d-inline-flex flex-row-reverse" data-total-value="0">

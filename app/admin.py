@@ -64,3 +64,8 @@ class SocialAdmin(admin.ModelAdmin):
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
     list_display = ["team", "star", "username", "address", "review"]
+
+
+@admin.register(InstallationTeam)
+class InstallationTeamAdmin(admin.ModelAdmin):
+    list_display = ["team_number"]
