@@ -8,8 +8,9 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact, FormPrice
+
 # from .helpers.get_user_geo import get_address
-from .models import Rating, InstallationTeam, Address
+from .models import Rating, InstallationTeam
 
 
 class IndexView(TemplateView, FormView):
@@ -59,9 +60,7 @@ class IndexView(TemplateView, FormView):
                 phone = f"{cd['phone']}"
                 email = f"{cd['email']}"
                 subject = "Eine neue Preise Anfrage"
-                message = (
-                    f"Eine neue Nachricht von {name}. Telefonnummer: {phone} \nEmail: {email} "
-                )
+                message = f"Eine neue Nachricht von {name}. Telefonnummer: {phone} \nEmail: {email} "
                 send_mail(
                     subject,
                     message,
@@ -72,16 +71,6 @@ class IndexView(TemplateView, FormView):
             else:
                 form = FormPrice()
         return render(request, self.template_name, {"form": form})
-
-    # def form_valid(self, form):
-    #     if self.request.POST.get("form_type") == "form_1":
-    #         self.object = form.save(commit=False)
-    #         self.object.save()
-    #
-    #     elif self.request.POST.get("form_type") == "form_2":
-    #         self.object = form.save(commit=False)
-    #         self.object.save()
-    #     return super().form_valid(form)
 
 
 class ReviewView(TemplateView):
