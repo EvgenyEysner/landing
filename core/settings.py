@@ -157,7 +157,7 @@ AXES_META_PRECEDENCE_ORDER = (  # Copied from django-ipware as that is apparentl
 # Block by Username only (i.e.: Same user different IP is still blocked, but different user same IP is not)
 AXES_ONLY_USER_FAILURES = True
 AXES_VERBOSE = True
-AXES_IP_BLACKLIST = env.list("BLACKLIST")
+# AXES_IP_BLACKLIST = env.list("BLACKLIST")
 AXES_ENABLE_ACCESS_FAILURE_LOG = True
 AXES_HTTP_RESPONSE_CODE = 429
 AXES_LOCKOUT_PARAMETERS = ["ip_address", ["username", "user_agent"]]
@@ -247,16 +247,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5 MB
 # email settings
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = "smtp.strato.de"
-EMAIL_PORT = 465
-EMAIL_HOST_USER = env("SERVER_EMAIL")
+
+# Email server configuration
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_USE_SSL = True
 
-ADMINS = [
-    # ("Evgeny", "eugen.eisner@gmail.com"),
-    ("Elektroservice", "moin@elektroservice-koenig.de"),
-]
+RECIPIENT_ADDRESS = env("RECIPIENT_ADDRESS")
 
 # Logging
 DB_LOGGER_ENTRY_LIFETIME = 30

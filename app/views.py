@@ -1,11 +1,13 @@
 import random
 
-from django.http import Http404
+from django.conf import settings
+from django.core.mail import send_mail
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
-from .forms import FormContact
+from .forms import FormContact, FormPrice
 # from .helpers.get_user_geo import get_address
 from .models import Rating, InstallationTeam, Address
 
@@ -18,18 +20,68 @@ class IndexView(TemplateView, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         reviews = list(Rating.objects.all())
-        context["reviews"] = random.sample(reviews, 5)
+        context["reviews"] = random.sample(reviews, 5) if reviews else None
         return context
 
-    def form_valid(self, form):
-        if self.request.POST.get("form_type") == "form_1":
-            self.object = form.save(commit=False)
-            self.object.save()
+    def post(self, request, *args, **kwargs):
+        if request.method == "POST" and request.POST.get("form_type") == "form-1":
+            form = FormContact(request.POST)
 
-        elif self.request.POST.get("form_type") == "form_2":
-            self.object = form.save(commit=False)
-            self.object.save()
-        return super().form_valid(form)
+            if form.is_valid():
+                # Form fields passed validation
+                cd = form.cleaned_data
+                name = f"{cd['name']}"
+                email = f"{cd['email']}"
+                phone = f"{cd['phone']}"
+                subject = "Eine neue Anfrage"
+                message = (
+                    f"Eine neue Nachricht von {name}. Tel.: {phone} \nEmail: {email} "
+                    f"\nNachricht: {cd['message']}"
+                )
+                send_mail(
+                    subject,
+                    message,
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=[settings.RECIPIENT_ADDRESS],
+                )
+                return HttpResponseRedirect(self.success_url)
+        else:
+            form = FormContact()
+
+        if request.method == "POST" and request.POST.get("form_type") == "form-2":
+            # Form was submitted
+            form = FormPrice(request.POST)
+            if form.is_valid():
+                # Form fields passed validation
+                cd = form.cleaned_data
+                print("REQUEST: ", cd)
+                name = f"{cd['name']}"
+                phone = f"{cd['phone']}"
+                email = f"{cd['email']}"
+                subject = "Eine neue Preise Anfrage"
+                message = (
+                    f"Eine neue Nachricht von {name}. Telefonnummer: {phone} \nEmail: {email} "
+                )
+                send_mail(
+                    subject,
+                    message,
+                    from_email=settings.EMAIL_HOST_USER,
+                    recipient_list=[settings.RECIPIENT_ADDRESS],
+                )
+                return HttpResponseRedirect(self.success_url)
+            else:
+                form = FormPrice()
+        return render(request, self.template_name, {"form": form})
+
+    # def form_valid(self, form):
+    #     if self.request.POST.get("form_type") == "form_1":
+    #         self.object = form.save(commit=False)
+    #         self.object.save()
+    #
+    #     elif self.request.POST.get("form_type") == "form_2":
+    #         self.object = form.save(commit=False)
+    #         self.object.save()
+    #     return super().form_valid(form)
 
 
 class ReviewView(TemplateView):
