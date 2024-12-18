@@ -5,6 +5,20 @@
 {% cache 30 header %}
 <head>
     <title>{% block title %}Elektroservice König - Zuverlässiger Experte für Ihre Solaranlage{% endblock %}</title>
+    <!-- Schema.org Markup für Organization -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://koenig39.de",
+            "name": "Koenig39",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+49-0157-57470753",
+                "contactType": "Customer Service"
+            }
+        }
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +42,15 @@
 
 </head>
 {% endcache %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YJ5P4KN4KN"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YJ5P4KN4KN');
+</script>
 <body>
 <div class="preloader">
     <div class="cssload-box-loading"></div>
