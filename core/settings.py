@@ -133,7 +133,7 @@ CSP_DEFAULT_SRC = (
 )
 
 # Cross-site request forgery
-CSRF_USE_SESSIONS = True
+CSRF_USE_SESSIONS = False
 
 # Axes config
 LOGIN_TIMEDELTA = 15 * 60
