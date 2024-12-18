@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView, FormView
 
 from .forms import FormContact, FormPrice
@@ -24,6 +25,7 @@ class IndexView(TemplateView, FormView):
         context["reviews"] = random.sample(reviews, 5) if reviews else None
         return context
 
+    @csrf_protect
     def post(self, request, *args, **kwargs):
         if request.method == "POST" and request.POST.get("form_type") == "form-1":
             form = FormContact(request.POST)
