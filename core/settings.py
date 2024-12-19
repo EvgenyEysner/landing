@@ -10,34 +10,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 env = environ.Env(
-    # django
-    DJANGO_ADMINS=(list, []),
-    DJANGO_ALLOWED_HOSTS=(
-        list,
-        [
-            "127.0.0.1",
-            "localhost",
-            "0.0.0.0",
-            "elektroservice-koenig.de",
-            "www.elektroservice-koenig.de",
-            "www.koenig39.de",
-            "koenig39.de",
-        ],
-    ),
-    DJANGO_STATIC_ROOT=(str, "staticfiles"),
-    DJANGO_MEDIA_ROOT=(str, "media"),
-    DJANGO_SECURE_HSTS_SECONDS=(int, 2592000),
-    DJANGO_SESSION_COOKIE_SECURE=(bool, False),
-    # Emailing
-    DJANGO_DEFAULT_FROM_EMAIL=(
-        str,
-        "",
-    ),
-    DJANGO_HELLO_EMAIL=(str, ""),
-    DJANGO_BACKOFFICE_EMAIL=(str, ""),
-    # Sentry
-    DJANGO_SENTRY_DSN=(str, ""),
-    DJANGO_SENTRY_ENVIRONMENTS=(str, "local"),
     DEBUG=(bool, False),
 )
 
@@ -46,10 +18,19 @@ SECRET_KEY = env("SECRET_KEY")
 environ.Env.read_env()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG")
-ADMINS = tuple([tuple(admins.split(":")) for admins in env.list("DJANGO_ADMINS")])
-MANAGERS = ADMINS
+# ADMINS = tuple([tuple(admins.split(":")) for admins in env.list("DJANGO_ADMINS")])
+# MANAGERS = ADMINS
 
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "0.0.0.0",
+    "elektroservice-koenig.de",
+    "www.elektroservice-koenig.de",
+    "www.koenig39.de",
+    "koenig39.de",
+]
+
 AUTHENTICATION_BACKENDS = [
     # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
     "axes.backends.AxesBackend",
@@ -92,9 +73,7 @@ MIDDLEWARE = [
     "axes.middleware.AxesMiddleware",
 ]
 
-SITE_ID = 1
-
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 ROOT_URLCONF = "core.urls"
 
 # Security envs
@@ -120,20 +99,20 @@ REFERRER_POLICY = "same-origin"
 URL_PROTOCOL = "https://" if SESSION_COOKIE_SECURE else "http://"
 
 # CSP config
-CSP_DEFAULT_SRC = (
-    "'self'",
-    "'unsafe-inline'",
-    "localhost:8000",
-    "unpkg.com",
-    "https://maps.googleapis.com",
-    "https://fonts.googleapis.com",
-    "https://fonts.gstatic.com",
-    "https://maps.gstatic.com",
-    "https://cdn.jsdelivr.net",
-)
+# CSP_DEFAULT_SRC = (
+#     "'self'",
+#     "'unsafe-inline'",
+#     "localhost:8000",
+#     "unpkg.com",
+#     "https://maps.googleapis.com",
+#     "https://fonts.googleapis.com",
+#     "https://fonts.gstatic.com",
+#     "https://maps.gstatic.com",
+#     "https://cdn.jsdelivr.net",
+# )
 
 # Cross-site request forgery
-CSRF_USE_SESSIONS = False
+CSRF_USE_SESSIONS = True
 
 # Axes config
 LOGIN_TIMEDELTA = 15 * 60
