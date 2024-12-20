@@ -14,9 +14,8 @@ from .forms import FormContact, FormPrice
 from .models import Rating, InstallationTeam
 
 
-class IndexView(TemplateView, FormView):
+class IndexView(TemplateView):
     template_name = "app/index.html"
-    form_class = FormContact
     success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
@@ -25,13 +24,11 @@ class IndexView(TemplateView, FormView):
         context["reviews"] = random.sample(reviews, 5) if reviews else None
         return context
 
-    @csrf_protect
     def post(self, request, *args, **kwargs):
         if request.method == "POST" and request.POST.get("form_type") == "form-1":
             form = FormContact(request.POST)
 
             if form.is_valid():
-                # Form fields passed validation
                 cd = form.cleaned_data
                 name = f"{cd['name']}"
                 email = f"{cd['email']}"
@@ -52,15 +49,13 @@ class IndexView(TemplateView, FormView):
             form = FormContact()
 
         if request.method == "POST" and request.POST.get("form_type") == "form-2":
-            # Form was submitted
             form = FormPrice(request.POST)
             if form.is_valid():
-                # Form fields passed validation
                 cd = form.cleaned_data
                 print("REQUEST: ", cd)
-                name = f"{cd['name']}"
-                phone = f"{cd['phone']}"
-                email = f"{cd['email']}"
+                name = f"{cd['lastname']}"
+                phone = f"{cd['userphone']}"
+                email = f"{cd['useremail']}"
                 subject = "Eine neue Preise Anfrage"
                 message = f"Eine neue Nachricht von {name}. Telefonnummer: {phone} \nEmail: {email} "
                 send_mail(
